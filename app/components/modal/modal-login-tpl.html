@@ -1,0 +1,32 @@
+<form name="loginForm" novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">
+            AngularJS - demo
+        </h3>
+
+        <p>
+            Aplikacja testowa - można edytować.
+        </p>
+    </div>
+    <div class="modal-body" ng-init="data.login='admin'; data.pass='admin'">
+
+        <input-dctv type="text"
+                    model="data.login"
+                    required="true"
+                    error-msg="errorMsg">
+            login:
+        </input-dctv>
+
+        <input-dctv type="password"
+                    model="data.pass"
+                    required="true"
+                    error-msg="errorMsg">
+            hasło:
+        </input-dctv>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok(loginForm.$valid)">Login</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</form>

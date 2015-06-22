@@ -1,0 +1,40 @@
+<div class="container-fluid" style="background-color: #F3F3F4;border-bottom: 1px solid #e7eaec !important;">
+    <span ncy-breadcrumb class="pull-left"></span>
+    <ul class="list-inline pull-right" style="margin: 0 !important;">
+        <li ng-if="$root.userState.access">
+            <a class="btn btn-success btn-add" ng-click="productsInterface.add()">
+                <i class="fa fa-plus"></i>
+                dodaj produkt
+            </a>
+            <a class="btn btn-info btn-add" ng-click="contactsInterface.add()">
+                <i class="fa fa-plus"></i>
+                dodaj kontakt
+            </a>
+        </li>
+        <li ng-if="$root.userState.unsavedData">
+            <a class="header-strip-btn">
+                <span class="preloader" ng-class="{show: $root.userState.unsavedData}"></span>
+            </a>
+        </li>
+        <li>
+            <a class="header-strip-btn"
+               ng-if="!$root.userState.access"
+               ng-click="signIn()">
+                <i class="fa fa-sign-in"></i>
+                zaloguj
+            </a>
+            <a class="header-strip-btn"
+               ng-if="$root.userState.access"
+               ng-click="signOut()">
+                <i class="fa fa-sign-out"></i>
+                wyloguj
+            </a>
+        </li>
+        <li>
+            <a class="btn btn-primary visible-xs-inline-block visible-sm-inline-block"
+               ng-click="$emit('menu::toggle')">
+                <i class="fa fa-bars"></i>
+            </a>
+        </li>
+    </ul>
+</div>

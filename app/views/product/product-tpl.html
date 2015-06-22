@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="col-lg-3">
+        <div ng-include="'views/product/partials/search.html'"></div>
+    </div>
+    <div class="col-lg-9">
+
+        <product-item-dctv
+                item="item"
+                delete="productsInterface.delete(item)"
+                update="productsInterface.update(item)"
+                ng-repeat="item in productsInterface.items
+                | filter:searchControl.search
+                | orderBy:searchControl.orderBy:searchControl.desc
+                | startFromFtr:paginationSettings.currentPage:paginationSettings.itemsPerPage
+                | limitTo:paginationSettings.itemsPerPage">
+        </product-item-dctv>
+
+        <pagination total-items="(productsInterface.items | filter:searchControl.search).length"
+                    ng-model="paginationSettings.currentPage"
+                    num-pages="paginationSettings.numPages"
+                    items-per-page="paginationSettings.itemsPerPage">
+                    <!--class="pagination-sm"
+                    boundary-links="true"
+                    rotate="false"
+                    num-pages="numPages"-->
+        </pagination>
+    </div>
+</div>

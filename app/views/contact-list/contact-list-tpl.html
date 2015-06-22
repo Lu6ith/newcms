@@ -1,0 +1,59 @@
+<div class="animated fadeIn product">
+    <div class="form-group-sm row">
+        <div class="col-lg-3">
+            <div ng-include="'views/contact-list/partials/search.html'"></div>
+        </div>
+        <div class="col-lg-9">
+            <div class="col-lg-2 alert-warning"
+                 sort-dctv
+                 sort-name="lastname"
+                 sort-settings="searchControl">
+                IMIĘ NAZWISKO
+            </div>
+            <div class="col-lg-2 alert-warning"
+                 sort-dctv
+                 sort-name="department"
+                 sort-settings="searchControl">
+                FIRMA
+            </div>
+            <div class="col-sm-2 alert-warning"
+                 sort-dctv
+                 sort-name="cellPhone"
+                 sort-settings="searchControl">
+                TELEFON
+            </div>
+            <div class="col-lg-2 alert-warning"
+                 sort-dctv
+                 sort-name="email"
+                 sort-settings="searchControl">
+                EMAIL
+            </div>
+            <div class="col-lg-2 calert-warning"
+                 sort-dctv
+                 sort-name="tags"
+                 sort-settings="searchControl">
+                TAGI
+            </div>
+            <div class="clearfix alert-warning"></div>
+            <hr/>
+
+            <contact-item-dctv
+                    item="item"
+                    ng-repeat="item in contactsInterface.items
+                    | orderBy:searchControl.sortBy:searchControl.desc
+                    | filter:searchControl.search
+                    | startFromFtr:paginationSettings.currentPage:paginationSettings.itemsPerPage
+                    | limitTo:paginationSettings.itemsPerPage"
+                    update="contactsInterface.update(item)"
+                    delete="contactsInterface.delete(item)">
+            </contact-item-dctv>
+
+            <pagination total-items="(contactsInterface.items | filter:searchControl.search).length"
+                        ng-model="paginationSettings.currentPage"
+                        class="pagination-sm"
+                        items-per-page="paginationSettings.itemsPerPage"
+                        num-pages="paginationSettings.numPages">
+            </pagination>
+        </div>
+    </div>
+</div>

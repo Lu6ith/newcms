@@ -1,0 +1,57 @@
+<div class="contact">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="firstname">imię</label>
+                <input id="firstname" class="form-control"
+                          type="text"
+                          ng-model="data.firstName"
+                          ng-disabled="!$root.userState.access">
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">nazwisko</label>
+                <input id="lastname" class="form-control"
+                          type="text"
+                          ng-model="data.lastName"
+                          ng-disabled="!$root.userState.access">
+            </div>
+
+            <div class="form-group">
+                <label for="department">firma</label>
+                <input id="department" class="form-control"
+                       type="text"
+                       ng-model="data.department"
+                       ng-disabled="!$root.userState.access">
+            </div>
+
+            <div class="form-group">
+                <label for="cellphone">komórka</label>
+                <input id="cellphone" class="form-control"
+                       type="text"
+                       ng-model="data.cellPhone"
+                       ng-disabled="!$root.userState.access">
+            </div>
+
+            <div class="form-group">
+                <label for="email">email</label>
+                <input id="email" class="form-control"
+                       type="text"
+                       ng-model="data.email"
+                       ng-disabled="!$root.userState.access">
+            </div>
+
+            <div class="form-group">
+                <label for="tags">tagi</label>
+                <input id="tags" class="form-control"
+                       type="text"
+                       ng-model="data.tags"
+                       ng-disabled="!$root.userState.access">
+            </div>
+        </div>
+    </div>
+
+    <div class="row col-lg-12">
+        <button class="btn btn-primary" ng-if="$root.userState.access" ng-click="update()">zapisz zmiany</button>
+    </div>
+</div>

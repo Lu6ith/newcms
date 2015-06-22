@@ -1,0 +1,58 @@
+<div class="animated fadeIn">
+
+    <div class="col-lg-3 row form-group-sm">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Wyszukiwarka
+            </div>
+            <div class="panel-body">
+                <input class="form-control" ng-model="query">
+                <hr/>
+                <p>rekordów po filtrowaniu: <span>{{(items | filter:query).length}} / {{items.length}}</span></p>
+
+                <p>jesteś na stronie: {{currentPage}} / {{numPages}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9">
+        <ul list-drop-down-dctv
+            class="list-unstyled">
+            <li item-drop-down-dctv
+                ng-repeat="menuItem in items
+                | filter:query
+                | startFromFtr:(currentPage-1)*itemsPerPage
+                | limitTo:itemsPerPage">
+                <i class="pull-left glyphicon"
+                   style="margin: 0 10px; color: #428BCA"
+                   ng-class="{'glyphicon-chevron-down':active, 'glyphicon-chevron-right': !active}"></i>
+
+                <div class="title"
+                     style="margin: 3px 0; cursor: pointer"
+                     ng-click="setActive(this)">
+                    {{menuItem.title}}
+                </div>
+                <div class="faq-content"
+                     ng-show="active"
+                     ng-bind-html="menuItem.content">
+                </div>
+                <div class="clearfix"></div>
+            </li>
+        </ul>
+
+        <hr/>
+        <div class="clearfix"></div>
+
+        <pagination total-items="(items | filter:query).length"
+                    ng-model="currentPage"
+                    max-size="maxSize"
+                    class="pagination-sm"
+                    items-per-page="itemsPerPage"
+                    num-pages="numPages">
+        </pagination>
+    </div>
+
+
+</div>
+
+

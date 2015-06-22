@@ -1,0 +1,39 @@
+<div class="animated fadeIn product">
+    <div class="form-group-sm row">
+        <div class="col-lg-3">
+            <div ng-include="'views/product-list/partials/search.html'"></div>
+        </div>
+        <div class="col-lg-9">
+            <div class="pull-left"
+                 sort-dctv
+                 sort-name="title"
+                 sort-settings="searchControl">
+                TYTUŁ/OPIS
+            </div>
+            <div class="pull-right"
+                 sort-dctv
+                 sort-name="price"
+                 sort-settings="searchControl">
+                CENA
+            </div>
+            <div class="clearfix"></div>
+            <hr/>
+            <product-item-dctv
+                    item="item"
+                    ng-repeat="item in productsInterface.items
+                    | orderBy:searchControl.sortBy:searchControl.desc
+                    | filter:searchControl.search
+                    | startFromFtr:paginationSettings.currentPage:paginationSettings.itemsPerPage
+                    | limitTo:paginationSettings.itemsPerPage"
+                    update="productsInterface.update(item)"
+                    delete="productsInterface.delete(item)">
+            </product-item-dctv>
+            <pagination total-items="(productsInterface.items | filter:searchControl.search).length"
+                        ng-model="paginationSettings.currentPage"
+                        class="pagination-sm"
+                        items-per-page="paginationSettings.itemsPerPage"
+                        num-pages="paginationSettings.numPages">
+            </pagination>
+        </div>
+    </div>
+</div>

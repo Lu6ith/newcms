@@ -1,0 +1,15 @@
+
+<div ng-form="inputDctv"
+     class="form-group">
+    <div ng-transclude></div>
+
+    <div class="input-content"></div>
+
+    <div ng-messages="inputDctv.$error" ng-if="errorMsg" class="text-danger">
+        <div ng-message="required">Pole wymagane</div>
+        <div ng-message="minlength">Tekst zbyt krótki</div>
+        <div ng-message="email">Email niepoprawny</div>
+        <div ng-message="number">Wymagana liczba</div>
+    </div>
+
+</div>

@@ -1,0 +1,35 @@
+<div class="form-group row">
+    <div class="col-lg-12">zdjęcie:</div>
+    <div class="col-lg-4">
+        <button ng-file-select
+                required
+                ng-model="files"
+                class="btn btn-primary">
+            Attach Any File
+        </button>
+        <div ng-file-drop
+             ng-model="files"
+             class="drop-box"
+             drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+             multiple="false"
+             allow-dir="true"
+             accept="image/*,application/pdf">
+            Drop Image here
+        </div>
+    </div>
+
+    <h3 class="col-lg-4">
+        <b class="text-success">
+            {{percent}} <span ng-if="percent">%</span>
+        </b>
+    </h3>
+
+    <div class="col-lg-4">
+        <img ng-src="{{data}}" width="150" alt=""/>
+    </div>
+
+    <div class="text-danger col-lg-12"
+         ng-if="!data && errorMsg">
+        Pole wymagane
+    </div>
+</div>

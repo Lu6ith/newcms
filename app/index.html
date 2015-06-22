@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <title>myApp</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width user-scalable=no initial-scale=1">
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="libs/jquery-colorbox/example2/colorbox.css"/>
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/flatly.css"/>
+    <link rel="stylesheet" href="libs/animate.css/animate.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="libs/angularjs-aside-menu/demo/css/menu.css"/>
+
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-sanitize/angular-sanitize.js"></script>
+    <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="libs/angular-cookies/angular-cookies.js"></script>
+    <script src="libs/angular-resource/angular-resource.js"></script>
+    <script src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="libs/angular-breadcrumb/dist/angular-breadcrumb.js"></script>
+    <script src="libs/angular-messages/angular-messages.js"></script>
+    <script src="libs/ng-file-upload/angular-file-upload.js"></script>
+    <script src="libs/angularjs-aside-menu/src/aside.menu.js"></script>
+    <script src="libs/ngmap/build/scripts/ng-map.js"></script>
+    <script src="http://maps.google.com/maps/api/js"></script>
+    <script src="libs/underscore/underscore.js"></script>
+    <script src="libs/jquery/dist/jquery.js"></script>
+    <script src="libs/jquery-colorbox/jquery.colorbox.js"></script>
+
+    <!-- build:js -->
+    <!-- inject:js -->
+    <script src="app.js"></script>
+    <script src="views/product-list/product-list.js"></script>
+    <script src="views/contact-list/contact-list.js"></script>
+    <script src="views/product/product-details.js"></script>
+    <script src="views/contact-list/contact-details.js"></script>
+    <script src="views/faq/faq.js"></script>
+    <script src="views/contact/contact.js"></script>
+    <script src="views/shop/shop.js"></script>
+    <script src="components/common/products-interface.js"></script>
+    <script src="components/common/contacts-interface.js"></script>
+    <script src="components/common/security.js"></script>
+    <script src="components/modal/modal.js"></script>
+    <script src="components/filters/filters.js"></script>
+    <script src="components/request/products-request.js"></script>
+    <script src="components/request/contacts-request.js"></script>
+    <script src="components/directives/product-item/product-item-dctv.js"></script>
+    <script src="components/directives/contact-item/contact-item-dctv.js"></script>
+    <script src="components/directives/product-item/sort-dctv.js"></script>
+    <script src="components/directives/upload/upload-dctv.js"></script>
+    <script src="components/directives/list-drop-down/drop-down-dctv.js"></script>
+    <script src="components/directives/header-strip/header-strip-dctv.js"></script>
+    <script src="components/directives/input/input-dctv.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+<body>
+
+<!--[if lt IE 9]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="pull-left left-container visible-md visible-lg">
+    <div class="nav-header">
+        <strong>{{$root.userState.user}}</strong>
+        <img src="assets/admin.png" width="70" />
+    </div>
+    <aside-menu items="data/menu.json"></aside-menu>
+</div>
+<div class="content-container">
+    <header-strip-dctv></header-strip-dctv>
+    <br/>
+    <div class="content container-fluid">
+        <ui-view></ui-view>
+    </div>
+
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <p class="text-muted col-lg-12">Copyright © 2015. PSE O/W-wa (TW) | Terms & Conditions</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>

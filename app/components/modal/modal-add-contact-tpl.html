@@ -1,0 +1,58 @@
+<form name="productForm" novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">
+            Nowy kontakt
+        </h3>
+    </div>
+    <div class="modal-body">
+        <input-dctv type="text"
+                    model="data.firstName"
+                    required="true"
+                    minlength="3"
+                    error-msg="errorMsg">
+            Imię:
+        </input-dctv>
+
+        <input-dctv type="text"
+                    model="data.lastName"
+                    required="true"
+                    minlength="3"
+                    error-msg="errorMsg">
+            Nazwisko:
+        </input-dctv>
+
+        <input-dctv type="text"
+                    model="data.department"
+                    required="true"
+                    minlength="3"
+                    error-msg="errorMsg">
+            Firma:
+        </input-dctv>
+
+        <input-dctv type="text"
+                    model="data.cellPhone"
+                    required="true"
+                    minlength="9"
+                    error-msg="errorMsg">
+            Telefon:
+        </input-dctv>
+        <input-dctv type="email"
+                    model="data.email"
+                    required="true"
+                    minlength="3"
+                    error-msg="errorMsg">
+            Email:
+        </input-dctv>
+        <input-dctv type="text"
+                    model="data.tags"
+                    required="true"
+                    minlength="3"
+                    error-msg="errorMsg">
+            Tagi:
+        </input-dctv>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok(productForm.$valid)">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</form>

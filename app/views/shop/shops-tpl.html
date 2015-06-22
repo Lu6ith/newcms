@@ -1,0 +1,27 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-6">
+            <a href="#/product-list" class="products-list">nasze produkty</a>
+            <br/>
+            <br/>
+            <map style="height: 500px;" center="52, 19"></map>
+        </div>
+        <div class="col-lg-6">
+            <tabset>
+                <tab ng-repeat="tab in ::data.tabs" heading="{{::tab.title}}" active="tab.active">
+                    <div ng-if="!_.isObject(tab.content)">
+                        {{::tab.content}}
+                    </div>
+                    <div ng-if="_.isObject(tab.content)">
+                        <dl class="dl-horizontal">
+                            <dt ng-repeat-start="(key, value) in ::tab.content">{{key}}</dt>
+                            <dd ng-repeat-end>{{::value}}</dd>
+                        </dl>
+                    </div>
+                </tab>
+            </tabset>
+            <hr/>
+            <img ng-src="{{::data.img}}" width="100%" alt=""/>
+        </div>
+    </div>
+</div>
