@@ -12,6 +12,11 @@
       "icon": "fa-user"
     },
     {
+      "name": "Pracownicy TW",
+      "link": "telekom-list",
+      "icon": "fa-user"
+    },
+    {
       "name": "Sklepy",
       "link": "",
       "icon": "fa-shopping-cart",

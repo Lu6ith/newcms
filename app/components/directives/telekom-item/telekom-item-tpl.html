@@ -1,0 +1,45 @@
+<article class="row">
+
+    <div class="col-lg-2">
+        <p><strong>{{item.lastName}}&nbsp;&nbsp; {{item.firstName}}</strong></p>
+    </div>
+
+    <div class="col-lg-2">
+        <div class="truncate">{{item.officePhone}}</div>
+    </div>
+
+    <div class="col-sm-2">
+        <div class="truncate">{{item.cellPhone}}</div>
+    </div>
+
+    <div class="col-lg-2">
+        <div><a href="mailto:#">{{item.email}}</a></div>
+    </div>
+
+    <div class="col-lg-2">
+        <!--<a href="{{item.tags}}"
+           rel="gal"
+           title="{{item.tags}}"
+           class="colorbox col-lg-3"
+           style=" width: auto; padding: 0;">{{item.tags}}
+        </a>-->
+        <span ng-if="item.tags.substring(0,11) == 'TW - Dyster'" class="label label-info">{{item.tags}}</span>
+        <span ng-if="item.tags.substring(0,12) == 'TW - Telekom'" class="label label-success">{{item.tags}}</span>
+        <span ng-if="item.tags.substring(0,13) == 'TW - Telemech'" class="label label-danger">{{item.tags}}</span>
+        <span ng-if="item.tags.substring(0,10) == 'TW - Zasil'" class="label label-default">{{item.tags}}</span>
+        <span ng-if="item.tags.substring(0,10) == 'TW - Klima'" class="label label-primary">{{item.tags}}</span>
+        <span ng-if="item.tags.substring(0,9) == 'TW - Info'" class="label label-warning">{{item.tags}}</span>
+    </div>
+
+    <div class="col-lg-2 text-right">
+
+        <div class="form-group">
+            <button class="btn btn-danger btn-sm" ng-click="delete({item: item})">
+                usuń
+            </button>
+            <a class="btn btn-primary btn-sm" ui-sref="telekom-details.item({id: item.id})">więcej</a>
+        </div>
+
+    </div>
+</article>
+<hr style="margin-top: 5px; margin-bottom: 6px;"/>

@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+    <div class="panel-heading">WYSZUKAJ PRACOWNIKA</div>
+    <div class="panel-body">
+        <input type="search"
+               id="search"
+               class="form-control"
+               autofocus
+               ng-model="searchControl.search"/>
+        <hr/>
+        <div>ilość pracowników:
+            <span>{{(telekomsInterface.items | filter:searchControl.search).length}}</span> /
+            <span>{{telekomsInterface.items.length}}</span>
+        </div>
+        <div>numer strony: {{paginationSettings.currentPage}} / {{paginationSettings.numPages}}</div>
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">SORTOWANIE</div>
+
+    <div class="panel-body form-inline">
+        <select ng-init="searchControl.sortBy='lastName'"
+                class="form-control"
+                id="sort"
+                ng-model="searchControl.sortBy"
+                ng-options="item for item in ['firstName', 'lastName', 'tags']">
+        </select>
+
+        <div class="btn-group-sm radio-inline" data-toggle="buttons">
+            <label class="btn btn-primary"
+                   ng-class="{'active': searchControl.desc, 'normal': !searchControl.desc}">
+                <input type="radio"
+                       ng-model="searchControl.desc"
+                       ng-value="true">
+                <i class="glyphicon glyphicon-sort-by-attributes-alt"></i>
+            </label>
+            <label class="btn btn-primary"
+                   ng-class="{'active': !searchControl.desc, 'normal': searchControl.desc}">
+                <input type="radio"
+                       ng-model="searchControl.desc"
+                       ng-value="false">
+                <i class="glyphicon glyphicon-sort-by-attributes"></i>
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">ILOŚĆ PRACOWNIKÓW NA STRONIE</div>
+    <div class="panel-body">
+        <select class="form-control "
+                style="width: 80px;"
+                ng-model="paginationSettings.itemsPerPage"
+                ng-options="item for item in [2, 5, 10]">
+        </select>
+    </div>
+</div>
