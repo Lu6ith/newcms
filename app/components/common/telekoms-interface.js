@@ -3,7 +3,7 @@
  */
 angular
     .module('myApp.telekomsInterface', [])
-    .service('telekomsInterface', function (telekomRequest, modalSrv, $timeout, $rootScope) {
+    .service('telekomsInterface', function (telekomRequest, dyzuryRequest, modalSrv, $timeout, $rootScope) {
         var telekomsInterface = {
             fetch: function () {
                 telekomRequest.fetch(function (responseData) {
@@ -26,6 +26,22 @@ angular
                     });
             },
 
+            deletedyzur: function (item) {
+                console.log('Dyzur item - ', item);
+                modalSrv.show('components/modal/modal-remove-dyzur-tpl.html',
+                    item,
+                    'sm',
+                    function (data) {
+                        dyzuryRequest.delete(item, function (responseData) {
+                            /*var itemindex = _.indexOf(telekomsInterface.items, item);
+                            telekomsInterface.items.splice(itemindex, 1);*/
+                            $timeout(function () {
+                                alert('usunięto!');
+                            })
+                        })
+                    });
+            },
+
             add: function (item) {
                 modalSrv.show('components/modal/modal-add-telekom-tpl.html',
                     item,
@@ -33,7 +49,7 @@ angular
                     function (data) {
                         data.title = 'pracownik';
                         telekomRequest.add(data, function (responseData) {
-                            console.log('response',responseData );
+                            //console.log('response',responseData );
                             telekomsInterface.items.push(responseData);
                             $timeout(function () {
                                 alert('Dodano nowego pracownika!');
@@ -41,6 +57,23 @@ angular
                         })
                     });
             },
+
+            addyzur: function (item) {
+                modalSrv.show('components/modal/modal-add-dyzur-tpl.html',
+                    item,
+                    '',
+                    function (data) {
+                        data.idem = $rootScope.dataid;
+                        dyzuryRequest.add(data, function (responseData) {
+                            //console.log('response',responseData );
+                            //telekomsInterface.items.push(responseData);
+                            $timeout(function () {
+                                alert('Dodano dyżur pracownikaa!');
+                            })
+                        })
+                    });
+            },
+
             update: function (item) {
                 telekomRequest.update(item, function () {
                     //productsInterface.items.push(responseData.data);

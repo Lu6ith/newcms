@@ -20,6 +20,7 @@ angular
         'myApp.telekomsInterface',
         'myApp.productsRequest',
         'myApp.contactsRequest',
+        'myApp.dyzuryRequest',
         'myApp.telekomRequest',
         'myApp.productDetails',
         'myApp.contactDetails',

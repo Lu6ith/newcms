@@ -1,0 +1,35 @@
+<form name="productForm" novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">
+            Nowy Dyzur
+        </h3>
+    </div>
+    <div class="modal-body">
+        <input-dctv type="date"
+                    model="data.datapocz"
+                    required="true"
+                    error-msg="errorMsg">
+            Data początku:
+        </input-dctv>
+
+        <input-dctv type="date"
+                    model="data.datakonc"
+                    required="true"
+                    error-msg="errorMsg">
+            Data końca:
+        </input-dctv>
+
+        <input-dctv type="text"
+                    model="data.grupa"
+                    required="true"
+                    minlength="5"
+                    error-msg="errorMsg">
+            Grupa:
+        </input-dctv>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok(productForm.$valid)">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</form>

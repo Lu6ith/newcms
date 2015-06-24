@@ -48,10 +48,49 @@
                        ng-model="data.tags"
                        ng-disabled="!$root.userState.access">
             </div>
+            <button class="btn btn-primary" ng-if="$root.userState.access" ng-click="update()">zapisz zmiany</button>
         </div>
-    </div>
+        <div class="col-lg-8">
+            <tabset>
+                <tab active="tab.active">
+                    <tab-heading>
+                        <i class="glyphicon glyphicon-eye-open"></i> Dyżury
+                    </tab-heading>
+                    <div class="panel panel-info">
 
-    <div class="row col-lg-12">
-        <button class="btn btn-primary" ng-if="$root.userState.access" ng-click="update()">zapisz zmiany</button>
+                        <nav class="navbar navbar-inverse">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" href="#">DYŻURY PRACOWNIKA</a>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-sm pull-right navbar-btn"
+                                        ng-if="$root.userState.access"
+                                        ng-click="add({item: data})">Dodaj dyżur
+                                </button>
+                            </div>
+                        </nav>
+                        <div class="panel-body">
+                            <li ng-repeat="dyzur in datadyzur">{{dyzur.datapocz}} - {{dyzur.datakonc}} - {{dyzur.grupa}}
+                                <button class="btn btn-danger btn-sm" ng-click="del(dyzur.id)">
+                                    usuń
+                                </button>
+                            </li>
+                        </div>
+                    </div>
+                </tab>
+                <tab>
+                    <tab-heading>
+                        <i class="glyphicon glyphicon-wrench"></i> Delegacje
+                    </tab-heading>
+                    <li ng-repeat="num in [4,5,6]">To jest kolejny znów numer {{num}}</li>
+                </tab>
+                <tab>
+                    <tab-heading>
+                        <i class="glyphicon glyphicon-tasks"></i> TO DO
+                    </tab-heading>
+                    <li ng-repeat="num in [7,8,9]">To jest mój kolejny numer {{num}}</li>
+                </tab>
+            </tabset>
+        </div>
     </div>
 </div>

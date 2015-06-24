@@ -48,10 +48,7 @@
                        ng-model="data.tags"
                        ng-disabled="!$root.userState.access">
             </div>
+            <button class="btn btn-primary" ng-if="$root.userState.access" ng-click="update()">zapisz zmiany</button>
         </div>
-    </div>
-
-    <div class="row col-lg-12">
-        <button class="btn btn-primary" ng-if="$root.userState.access" ng-click="update()">zapisz zmiany</button>
     </div>
 </div>

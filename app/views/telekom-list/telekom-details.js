@@ -19,14 +19,21 @@ angular
                 resolve: {
                     responseData: function (telekomRequest, $stateParams) {
                         return telekomRequest.fetchone({id: $stateParams.id});
+                    },
+                    responseDyzur: function (dyzuryRequest, $stateParams) {
+                        return dyzuryRequest.fetch({id: $stateParams.id});
                     }
                 }
             })
     })
-    .controller('telekomDetailsCtrl', function ($scope, responseData, telekomRequest) {
+    .controller('telekomDetailsCtrl', function ($scope, $rootScope, responseData, responseDyzur, telekomRequest, dyzuryRequest, telekomsInterface) {
         responseData.$promise.then(function (data) {
             $scope.data = data;
-        })
+        });
+        responseDyzur.$promise.then(function (data) {
+            $scope.datadyzur = data;
+        });
+
         $scope.$root.unsaved = true;
         $scope.update = function () {
             telekomRequest.update($scope.data,
@@ -34,5 +41,13 @@ angular
                     $scope.$root.unsaved = !responseData.status;
                     alert('zmiany zapisane');
                 })
+        };
+        $scope.add = function () {
+            $rootScope.dataid = $scope.data.id;
+            telekomsInterface.addyzur();
+        };
+        $scope.del = function (id) {
+            $rootScope.dataid = $scope.data.id;
+            telekomsInterface.deletedyzur(id);
         }
     });
