@@ -1,17 +1,17 @@
 <form name="deleteForm" novalidate>
     <div class="modal-header">
         <h3 class="modal-title">
-            Usunięcie dyzuru: {{ data.datapocz }}
+            Usunięcie dyzuru:
         </h3>
     </div>
-    <div class="modal-body">
+    <!--<div class="modal-body">
         <input-dctv type="textarea"
                     model="data.reason"
                     required="true"
                     error-msg="errorMsg">
             Podaj przyczynę
         </input-dctv>
-    </div>
+    </div>-->
     <div class="modal-footer">
         <button class="btn btn-primary" ng-click="ok(deleteForm.$valid)">OK</button>
         <button class="btn btn-warning" ng-click="cancel()">Cancel</button>

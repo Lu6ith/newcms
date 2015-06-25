@@ -70,11 +70,40 @@
                             </div>
                         </nav>
                         <div class="panel-body">
-                            <li ng-repeat="dyzur in datadyzur">{{dyzur.datapocz}} - {{dyzur.datakonc}} - {{dyzur.grupa}}
-                                <button class="btn btn-danger btn-sm" ng-click="del(dyzur.id)">
-                                    usuń
-                                </button>
-                            </li>
+
+                            <table class="table table-hover table-striped table-condensed">
+                                <thead>
+                                <tr class="warning">
+                                    <th data-field="datapocz" class="col-md-4">
+                                        <i class="glyphicon glyphicon-circle-arrow-right"></i>
+                                        Data początku
+                                    </th>
+                                    <th data-field="datakonc" class="col-md-4">
+                                        <i class="glyphicon glyphicon-circle-arrow-left"></i>
+                                        Data końca
+                                    </th>
+                                    <th data-field="grupa" class="col-md-3">
+                                        <i class="glyphicon glyphicon-certificate"></i>
+                                        Grupa
+                                    </th>
+                                    <th class="col-md-1">
+                                        <i class="glyphicon glyphicon-wrench"></i>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="dyzur in datadyzur">
+                                        <td>{{dyzur.datapocz}}</td>
+                                        <td>{{dyzur.datakonc}}</td>
+                                        <td>{{dyzur.grupa}}</td>
+                                        <td>
+                                            <a href="#" role="button" class="delete" ng-click="del(dyzur.id)">
+                                                <span class="glyphicon glyphicon-remove text-danger btn-sm" aria-hidden="true"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </tab>

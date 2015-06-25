@@ -3,7 +3,7 @@
  */
 angular
     .module('myApp.telekomsInterface', [])
-    .service('telekomsInterface', function (telekomRequest, dyzuryRequest, modalSrv, $timeout, $rootScope) {
+    .service('telekomsInterface', function (telekomRequest, dyzuryRequest, modalSrv, $timeout, $rootScope, $filter) {
         var telekomsInterface = {
             fetch: function () {
                 telekomRequest.fetch(function (responseData) {
@@ -32,9 +32,9 @@ angular
                     item,
                     'sm',
                     function (data) {
-                        dyzuryRequest.delete(item, function (responseData) {
-                            /*var itemindex = _.indexOf(telekomsInterface.items, item);
-                            telekomsInterface.items.splice(itemindex, 1);*/
+                        dyzuryRequest.delete({id: item}, function (responseData) {
+                            var itemindex = _.indexOf(telekomsInterface.datadyzur, item);
+                            telekomsInterface.datadyzur.splice(itemindex, 1);
                             $timeout(function () {
                                 alert('usunięto!');
                             })
@@ -64,9 +64,12 @@ angular
                     '',
                     function (data) {
                         data.idem = $rootScope.dataid;
+                        $filter('date')(data.datapocz, 'dd-MM-yyyy', 'GMT+0200');
+                        $filter('date')(data.datakonc, 'dd-MM-yyyy', 'GMT+0200n');
+                        console.log('Daty: ', data.datapocz, data.datakonc);
                         dyzuryRequest.add(data, function (responseData) {
                             //console.log('response',responseData );
-                            //telekomsInterface.items.push(responseData);
+                            telekomsInterface.datadyzur.push(responseData);
                             $timeout(function () {
                                 alert('Dodano dyżur pracownikaa!');
                             })

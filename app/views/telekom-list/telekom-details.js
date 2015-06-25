@@ -32,7 +32,16 @@ angular
         });
         responseDyzur.$promise.then(function (data) {
             $scope.datadyzur = data;
+            telekomsInterface.datadyzur = $scope.datadyzur;
         });
+
+        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        $scope.format = $scope.formats[0];
+
+        $scope.toggleMin = function() {
+            $scope.minDate = $scope.minDate ? null : new Date();
+        };
+        $scope.toggleMin();
 
         $scope.$root.unsaved = true;
         $scope.update = function () {

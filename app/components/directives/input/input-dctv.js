@@ -11,8 +11,18 @@ angular
                 errorMsg: "=",
                 model: "="
             },
-            compile: function (el, attrs) {
+            compile: function (el, attrs, $scope) {
                 //debugger
+                $scope.today = function() {
+                    $scope.dt = new Date();
+                };
+                $scope.today();
+
+                $scope.dateOptions = {
+                    formatYear: 'yyyy',
+                    startingDay: 1
+                };
+
                 var tpl = attrs.type === 'textarea'
                     ? angular.element("<textarea>")
                     : angular.element("<input>").attr('type',attrs.type).attr('aria-describedby', 'sizing-addon3').attr('class', 'form-control');
@@ -21,7 +31,14 @@ angular
                     required: 'required',
                     'ng-model': 'model',
                     'ng-minlength': attrs.minlength || 3
-                })
+                });
+
+                if (attrs.type === 'date') {
+                   tpl.attr({
+                       'datepicker-popup': ''
+                      /* 'datepicker-options': 'dateOptions'*/
+                   })
+                };
 
                 var inputContent = el[0].getElementsByClassName('input-content');
                 angular.element(inputContent).append(tpl);
