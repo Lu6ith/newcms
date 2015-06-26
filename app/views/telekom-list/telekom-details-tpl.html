@@ -111,7 +111,130 @@
                     <tab-heading>
                         <i class="glyphicon glyphicon-wrench"></i> Delegacje
                     </tab-heading>
-                    <li ng-repeat="num in [4,5,6]">To jest kolejny znów numer {{num}}</li>
+                    <div class="panel panel-success">
+
+                        <nav class="navbar navbar-inverse">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" href="#">DELEGACJE PRACOWNIKA</a>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-sm pull-right navbar-btn"
+                                        ng-if="$root.userState.access"
+                                        ng-click="adddel({item: data})">Rejestruj delegację
+                                </button>
+                            </div>
+                        </nav>
+                        <div class="panel-body">
+
+                            <table class="table table-hover table-striped table-condensed">
+                                <thead>
+                                <tr class="warning">
+                                    <th data-field="datapocz" class="col-md-1">
+                                        <i class="glyphicon glyphicon-circle-arrow-right"></i>
+                                        Numer
+                                    </th>
+                                    <th data-field="datakonc" class="col-md-2">
+                                        <i class="glyphicon glyphicon-circle-arrow-left"></i>
+                                        Data
+                                    </th>
+                                    <th data-field="grupa" class="col-md-2">
+                                        <i class="glyphicon glyphicon-certificate"></i>
+                                        Dokąd
+                                    </th>
+                                    <th data-field="grupa" class="col-md-2">
+                                        <i class="glyphicon glyphicon-certificate"></i>
+                                        Środek transp.
+                                    </th>
+                                    <th data-field="grupa" class="col-md-2">
+                                        <i class="glyphicon glyphicon-certificate"></i>
+                                        Kilometry
+                                    </th>
+                                    <th data-field="grupa" class="col-md-2">
+                                        <i class="glyphicon glyphicon-certificate"></i>
+                                        Nadgodziny
+                                    </th>
+                                    <th class="col-md-1">
+                                        <i class="glyphicon glyphicon-wrench"></i>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="delegac in delegacje">
+                                    <td>{{delegac.numer}}</td>
+                                    <td>{{delegac.datadel}}</td>
+                                    <td>{{delegac.do}}</td>
+                                    <td>{{delegac.srtrans}}</td>
+                                    <td>{{delegac.kilometry}}</td>
+                                    <td>{{delegac.nadgodziny}}</td>
+                                    <td>
+                                        <a href="#" role="button" class="delete" ng-click="deldel(delegac.id)">
+                                            <span class="glyphicon glyphicon-remove text-danger btn-sm" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Zestawienia - podsumowania</h3>
+                        </div>
+                        <!--<div class="panel-body">
+                            <p>Sumaryczne podsumowanie dla pracownika</p>
+                        </div>-->
+                        <ul class="list-group">
+                            <li class="list-group-item">Ogólna liczba nadgodzin: <em><b>{{sumagodz}}</b></em></li>
+                            <li class="list-group-item">Suma przejechanych kilometrów: <em><b>{{sumakil}}</b></em></li>
+                            <li class="list-group-item">Suma przejechanych kilometrów w b.miesiącu: <em><b>{{sumakil}}</b></em></li>
+                        </ul>
+                        <div class="row">
+                            <!-- Line -->
+                            <div class="col-lg-6">
+                                <section class="panel">
+                                    <header class="panel-heading">
+                                        Line
+                                    </header>
+                                    <div class="panel-body text-center">
+                                        <div id="line"
+                                                class="chart chart-line"
+                                                ac-data="lineChartData.data"
+                                                ac-chart="line"
+                                                ac-config="config"
+                                                width="400"
+                                                height="350"
+                                                >
+                                                <!--labels="lineChartData.labels"
+                                                series="lineChartData.series">-->
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            <!-- Bar -->
+                            <div class="col-lg-6">
+                                <section class="panel">
+                                    <header class="panel-heading">
+                                        Bar
+                                    </header>
+                                    <div class="panel-body text-center">
+                                        <div id="bar"
+                                                class="chart chart-bar"
+                                                ac-data="barChartData.data"
+                                                ac-chart="bar"
+                                                ac-config="config"
+                                                width="400"
+                                                height="350"
+                                                >
+                                                <!--labels="barChartData.labels"
+                                                series="barChartData.series">-->
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
                 </tab>
                 <tab>
                     <tab-heading>

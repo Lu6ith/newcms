@@ -26,16 +26,26 @@ $app->put('/employees/:id', 'updateEmployee');
 $app->post('/employees/', 'addEmployee');
 
 // Pracownicy PSE Centrum ZT
+//---------------------------------------
 $app->get('/telekom/', 'getTelekoms');
 $app->get('/telekom/:id', 'getEmployee');
 $app->put('/telekom/:id', 'updateEmployee');
 
 // Dyzury PSE Centrum ZT
-$app->get('/dyzury', 'getDyzury');
+//---------------------------------------
+$app->get('/dyzury/', 'getDyzury');
 $app->get('/dyzury/:idem', 'getEmpDyzury');
 //$app->put('/dyzury/:idem', 'updateEmpDyzury');
 $app->post('/dyzury/', 'addDyzury');
 $app->delete('/dyzury/:id',	'delEmpDyzury');
+
+// Delegacje PSE CENTRUM ZT
+//---------------------------------------
+$app->get('/delegacje/', 'getDelegac');
+$app->get('/delegacje/:idem', 'getEmpDelegac');
+$app->put('/delegacje/:idem', 'updateEmpDelegac');
+$app->post('/delegacje/', 'addDelegac');
+$app->delete('/delegacje/:id',	'delEmpDelegac');
 
 $app->run();
 
@@ -426,6 +436,145 @@ function delEmpDyzury($id) {
 		$db = null;
 	} catch(PDOException $e) {
 		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+	}
+}
+
+//------------------  D E L E G A C J E  -------------------------------------
+function getDelegac() {
+
+    $sql = "select e.id, e.idem, e.numer, e.datadel, e.do, e.srtrans, e.nadgodziny, e.kilometry " .
+            "from delegacje e ".
+            "order by e.idem, e.numer";
+    try {
+        $db = getConnection();
+        $stmt = $db->query($sql);
+        $delegacje = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+
+        // Include support for JSONP requests
+        if (!isset($_GET['callback'])) {
+            echo json_encode($delegacje);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($delegacje) . ');';
+        }
+
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+    //echo "go";
+}
+
+function getEmpDelegac($idem) {
+    global $app;
+
+    $sql = "select e.id, e.idem, e.numer, e.datadel, e.do, e.srtrans, e.nadgodziny, e.kilometry " .
+            "from delegacje e " .
+            "where e.idem = :idem";
+    try {
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("idem", $idem);
+        $stmt->execute();
+        $delegacje = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        $app->status(200);
+        $app->contentType('application/json');
+
+        // Include support for JSONP requests
+        if (!isset($_GET['callback'])) {
+            echo json_encode($delegacje);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($delegacje) . ');';
+        }
+
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+    //echo "go";
+}
+
+function addDelegac() {
+        global $app;
+
+	//error_log('addContact\n', 3, '/var/tmp/php.log');
+	$request = Slim::getInstance()->request();
+	$wine = json_decode($request->getBody());
+	$sql = "INSERT INTO delegacje (idem, numer, datadel, do, srtrans, nadgodziny, kilometry) " .
+	       "VALUES (:idem, :numer, :datadel, :do, :srtrans, :nadgodziny, :kilometry)";
+	try {
+		$db = getConnection();
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam("idem", $wine->idem);
+		$stmt->bindParam("numer", $wine->numer);
+		$stmt->bindParam("datadel", $wine->datadel);
+		$stmt->bindParam("do", $wine->do);
+		$stmt->bindParam("srtrans", $wine->srtrans);
+		$stmt->bindParam("nadgodziny", $wine->nadgodziny);
+		$stmt->bindParam("kilometry", $wine->kilometry);
+		$stmt->execute();
+		$wine->id = $db->lastInsertId();
+		$db = null;
+        $app->status(200);
+	    $app->contentType('application/json');
+
+		//$app->response()->header('Content-Type', 'application/json');
+        if (!isset($_GET['callback'])) {
+            echo json_encode($wine);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($wine) . ');';
+        };
+	} catch(PDOException $e) {
+		//error_log($e->getMessage(), 3, '/var/tmp/php.log');
+		echo '{"error":{"text":'. $e->getMessage() .'}}';
+	}
+}
+
+function delEmpDelegac($id) {
+	$sql = "DELETE FROM delegacje WHERE id=:id";
+	try {
+		$db = getConnection();
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam("id", $id);
+		$stmt->execute();
+		$db = null;
+	} catch(PDOException $e) {
+		echo '{"error":{"text":'. $e->getMessage() .'}}';
+	}
+}
+
+function updateEmpDelegac($id) {
+    global $app;
+
+	$request = Slim::getInstance()->request();
+	$body = $request->getBody();
+	$wine = json_decode($body);
+	$sql = "UPDATE delegacje SET numer=:numer, datadel=:datadel, do=:do, srtrans=:srtrans, nadgodziny=:nadgodziny, kilometry=:kilometry WHERE id=:id";
+	try {
+		$db = getConnection();
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam("id", $id);
+		//$stmt->bindParam("idem", $wine->idem);
+		$stmt->bindParam("numer", $wine->numer);
+		$stmt->bindParam("datadel", $wine->datadel);
+		$stmt->bindParam("do", $wine->do);
+		$stmt->bindParam("srtrans", $wine->srtrans);
+		$stmt->bindParam("nadgodziny", $wine->nadgodziny);
+		$stmt->bindParam("kilometry", $wine->kilometry);
+		$stmt->execute();
+		$db = null;
+		$app->status(200);
+        $app->contentType('application/json');
+
+		//$app->response()->header('Content-Type', 'application/json');
+        // Include support for JSONP requests
+        if (!isset($_GET['callback'])) {
+            echo json_encode($wine);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($wine) . ');';
+        };
+		//echo json_encode($wine);
+	} catch(PDOException $e) {
+		echo '{"error":{"text":'. $e->getMessage() .'}}';
 	}
 }
 

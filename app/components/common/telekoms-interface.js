@@ -3,7 +3,7 @@
  */
 angular
     .module('myApp.telekomsInterface', [])
-    .service('telekomsInterface', function (telekomRequest, dyzuryRequest, modalSrv, $timeout, $rootScope, $filter) {
+    .service('telekomsInterface', function (telekomRequest, dyzuryRequest, delegacjeRequest, modalSrv, $timeout, $rootScope, $filter) {
         var telekomsInterface = {
             fetch: function () {
                 telekomRequest.fetch(function (responseData) {
@@ -42,6 +42,22 @@ angular
                     });
             },
 
+            deletedeleg: function (item) {
+                console.log('Deleg item - ', item);
+                modalSrv.show('components/modal/modal-remove-deleg-tpl.html',
+                    item,
+                    'sm',
+                    function (data) {
+                        delegacjeRequest.delete({id: item}, function (responseData) {
+                            var itemindex = _.indexOf(telekomsInterface.delegacje, item);
+                            telekomsInterface.delegacje.splice(itemindex, 1);
+                            $timeout(function () {
+                                alert('usunięto!');
+                            })
+                        })
+                    });
+            },
+
             add: function (item) {
                 modalSrv.show('components/modal/modal-add-telekom-tpl.html',
                     item,
@@ -65,13 +81,32 @@ angular
                     function (data) {
                         data.idem = $rootScope.dataid;
                         $filter('date')(data.datapocz, 'dd-MM-yyyy', 'GMT+0200');
-                        $filter('date')(data.datakonc, 'dd-MM-yyyy', 'GMT+0200n');
+                        $filter('date')(data.datakonc, 'dd-MM-yyyy', 'GMT+0200');
                         console.log('Daty: ', data.datapocz, data.datakonc);
                         dyzuryRequest.add(data, function (responseData) {
                             //console.log('response',responseData );
                             telekomsInterface.datadyzur.push(responseData);
                             $timeout(function () {
                                 alert('Dodano dyżur pracownikaa!');
+                            })
+                        })
+                    });
+            },
+
+            addeleg: function (item) {
+                modalSrv.show('components/modal/modal-add-deleg-tpl.html',
+                    item,
+                    '',
+                    function (data) {
+                        data.idem = $rootScope.datadelid;
+                        $filter('date')(data.datadel, 'dd-MM-yyyy', 'GMT+0200');
+                        delegacjeRequest.add(data, function (responseData) {
+                            //console.log('response',responseData );
+                            telekomsInterface.delegacje.push(responseData);
+                            telekomsInterface.sumkil += responseData.kilometry;
+                            telekomsInterface.sumgodz += responseData.nadgodziny;
+                            $timeout(function () {
+                                alert('Dodano delegację pracownikaa!');
                             })
                         })
                     });

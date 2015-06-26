@@ -22,6 +22,7 @@
     "jquery": "latest",
     "jquery-colorbox": "latest",
     "animate.css": "latest",
-    "angular-breadcrumb": "latest"
+    "angular-breadcrumb": "latest",
+    "angular-charts": "latest"
   }
 }

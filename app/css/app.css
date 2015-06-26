@@ -199,3 +199,8 @@ header-strip*/
     display: inline-block;
     padding: 10px 0;
 }
+
+.chart {
+    width: 400px;
+    height: 500px;
+}
