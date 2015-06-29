@@ -44,75 +44,49 @@ angular
             $scope.sumakil = $scope.sumkil();
             $scope.sumagodz = $scope.sumgodz();
 
-            $scope.lineChartData = {
-                labels : ["","","","","","",""],
-                series: ['Seria A', 'Seria B'],
-                data: [
-                    [65,59,90,81,56,55,40],
-                    [28,48,40,19,96,27,100]
-                ],
-                datasets : [
-                    {
-                        fillColor : "rgba(220,220,220,0.5)",
-                        strokeColor : "rgba(220,220,220,1)",
-                        pointColor : "rgba(220,220,220,1)",
-                        pointStrokeColor : "#fff",
-                        data : [65,59,90,81,56,55,40]
+            $scope.options = {
+                chart: {
+                    type: 'discreteBarChart',
+                    height: 450,
+                    width: 400,
+                    margin : {
+                        top: 20,
+                        right: 20,
+                        bottom: 60,
+                        left: 55
                     },
-                    {
-                        fillColor : "rgba(151,187,205,0.5)",
-                        strokeColor : "rgba(151,187,205,1)",
-                        pointColor : "rgba(151,187,205,1)",
-                        pointStrokeColor : "#fff",
-                        data : [28,48,40,19,96,27,100]
-                    }
-                ]
-
-            };
-            $scope.barChartData = {
-                labels : ["January","February","March","April","May","June","July"],
-                series: ['Seria A', 'Seria B'],
-                data: [{
-                    x: "Seria A",
-                    y: [65,59,90,81,56,55,40],
-                    tooltip: "To jest seria A"
-                },{
-                    x: "Seria B",
-                    y: [28,48,40,19,96,27,100],
-                    tooltip: "To jest seria B"
-                }],
-                datasets : [
-                    {
-                        fillColor : "rgba(220,220,220,0.5)",
-                        strokeColor : "rgba(220,220,220,1)",
-                        data : [65,59,90,81,56,55,40]
+                    x: function(d){ return d.label; },
+                    y: function(d){ return d.value; },
+                    showValues: true,
+                    valueFormat: function(d){
+                        return d3.format(',.4f')(d);
                     },
-                    {
-                        fillColor : "rgba(151,187,205,0.5)",
-                        strokeColor : "rgba(151,187,205,1)",
-                        data : [28,48,40,19,96,27,100]
+                    transitionDuration: 500,
+                    xAxis: {
+                        axisLabel: 'X Axis'
+                    },
+                    yAxis: {
+                        axisLabel: 'Y Axis',
+                        axisLabelDistance: 30
                     }
-                ]
-
+                }
             };
-            //new Chart(document.getElementById("line").getContext("2d")).Line(lineChartData);
-            //new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
+
+            $scope.data = [{
+                key: "Cumulative Return",
+                values: [
+                    { "label" : "A" , "value" : -29.765957771107 },
+                    { "label" : "B" , "value" : 0 },
+                    { "label" : "C" , "value" : 32.807804682612 },
+                    { "label" : "D" , "value" : 196.45946739256 },
+                    { "label" : "E" , "value" : 0.19434030906893 },
+                    { "label" : "F" , "value" : -98.079782601442 },
+                    { "label" : "G" , "value" : -13.925743130903 },
+                    { "label" : "H" , "value" : -5.1387322875705 }
+                ]
+            }];
+
         });
-
-        $scope.config = {
-            title: 'Products',
-            tooltips: true,
-            labels: false,
-            mouseover: function() {},
-            mouseout: function() {},
-            click: function() {},
-            waitForHeightAndWidth: false,
-            legend: {
-                display: true,
-                //could be 'left, right'
-                position: 'right'
-            }
-        };
 
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
         $scope.format = $scope.formats[0];

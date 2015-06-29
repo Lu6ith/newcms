@@ -8,7 +8,7 @@ angular
         'ncy-angular-breadcrumb',
         'ngMap',
         'aside.menu',
-        'angularCharts',
+        'nvd3',
         'myApp.contact',
         'myApp.productList',
         'myApp.contactList',
@@ -43,7 +43,7 @@ angular
     })
 
     .constant("CONFIGC", {
-        "API": "http://192.168.73.30/dirboot/directory-rest-php/"
+        "API": "http://localhost/dirboot/directory-rest-php/"
     })
 
     .config(function ($urlRouterProvider, $resourceProvider, $httpProvider) {
