@@ -185,52 +185,48 @@
                         <!--<div class="panel-body">
                             <p>Sumaryczne podsumowanie dla pracownika</p>
                         </div>-->
-                        <ul class="list-group">
-                            <li class="list-group-item">Ogólna liczba nadgodzin: <em><b>{{sumagodz}}</b></em></li>
-                            <li class="list-group-item">Suma przejechanych kilometrów: <em><b>{{sumakil}}</b></em></li>
-                            <li class="list-group-item">Suma przejechanych kilometrów w b.miesiącu: <em><b>{{sumakil}}</b></em></li>
-                        </ul>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Suma przejechanych kilometrów:
+                                        <span class="badge"><em><b>{{sumakil}}</b></em></span></li>
+                                    <li class="list-group-item">Suma przejechanych kilometrów w b.miesiącu:
+                                        <span class="badge"><em><b>{{sumies}}</b></em></span></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Ogólna liczba nadgodzin:
+                                        <span class="badge"><em><b>{{sumagodz}}</b></em></span></li>
+                                    <li class="list-group-item">liczba nadgodzin w b.miesiącu:
+                                        <span class="badge"><em><b>{{sumnad}}</b></em></span></li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="row">
                             <!-- Line -->
                             <div class="col-lg-6">
-                                <section class="panel">
+                                <section class="panel panel-default">
                                     <header class="panel-heading">
-                                        Line
+                                        Kilometry w miesiącu
                                     </header>
                                     <div class="panel-body text-center">
-                                        <!--<div id="line"
-                                                class="chart chart-line"
-                                                ac-data="lineChartData.data"
-                                                ac-chart="line"
-                                                ac-config="config"
-                                                width="400"
-                                                height="350"
-                                                >
-                                                &lt;!&ndash;labels="lineChartData.labels"
-                                                series="lineChartData.series">&ndash;&gt;
-                                        </div>-->
-                                        <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
+                                        <nvd3 options="optionskm" data="datakm" class="with-3d-shadow with-transitions" >
+                                            <svg  width="400"></svg>
+                                        </nvd3>
                                     </div>
                                 </section>
                             </div>
                             <!-- Bar -->
                             <div class="col-lg-6">
-                                <section class="panel">
+                                <section class="panel panel-default">
                                     <header class="panel-heading">
-                                        Bar
+                                        Nadgodziny w miesiącu
                                     </header>
                                     <div class="panel-body text-center">
-                                        <!--<div id="bar"
-                                                class="chart chart-bar"
-                                                ac-data="barChartData.data"
-                                                ac-chart="bar"
-                                                ac-config="config"
-                                                width="400"
-                                                height="350"
-                                                >
-                                                &lt;!&ndash;labels="barChartData.labels"
-                                                series="barChartData.series">&ndash;&gt;
-                                        </div>-->
+                                        <nvd3 options="optionsndg" data="datandg" class="with-3d-shadow with-transitions" >
+                                            <svg  width="400"></svg>
+                                        </nvd3>
                                     </div>
                                 </section>
                             </div>

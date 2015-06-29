@@ -43,7 +43,7 @@ angular
     })
 
     .constant("CONFIGC", {
-        "API": "http://localhost/dirboot/directory-rest-php/"
+        "API": "http://192.168.73.30/dirboot/directory-rest-php/"
     })
 
     .config(function ($urlRouterProvider, $resourceProvider, $httpProvider) {

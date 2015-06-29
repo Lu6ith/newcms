@@ -27,7 +27,7 @@ angular
             },
 
             deletedyzur: function (item) {
-                console.log('Dyzur item - ', item);
+                //console.log('Dyzur item - ', item);
                 modalSrv.show('components/modal/modal-remove-dyzur-tpl.html',
                     item,
                     'sm',
@@ -43,7 +43,7 @@ angular
             },
 
             deletedeleg: function (item) {
-                console.log('Deleg item - ', item);
+                //console.log('Deleg item - ', item);
                 modalSrv.show('components/modal/modal-remove-deleg-tpl.html',
                     item,
                     'sm',
@@ -51,7 +51,11 @@ angular
                         delegacjeRequest.delete({id: item}, function (responseData) {
                             var itemindex = _.indexOf(telekomsInterface.delegacje, item);
                             telekomsInterface.delegacje.splice(itemindex, 1);
+
                             $timeout(function () {
+                                $rootScope.sumakil -= parseInt(telekomsInterface.delegacje[itemindex].kilometry);
+                                $rootScope.sumagodz -= parseInt(telekomsInterface.delegacje[itemindex].nadgodziny);
+                                console.log('Del deleg: ', $rootScope.sumakil, $rootScope.sumagodz);
                                 alert('usunięto!');
                             })
                         })
@@ -103,9 +107,11 @@ angular
                         delegacjeRequest.add(data, function (responseData) {
                             //console.log('response',responseData );
                             telekomsInterface.delegacje.push(responseData);
-                            telekomsInterface.sumkil += responseData.kilometry;
-                            telekomsInterface.sumgodz += responseData.nadgodziny;
+
                             $timeout(function () {
+                                $rootScope.sumakil += parseInt(responseData.kilometry);
+                                $rootScope.sumagodz += parseInt(responseData.nadgodziny);
+                                console.log('Add deleg: ', $rootScope.sumakil, $rootScope.sumagodz);
                                 alert('Dodano delegację pracownikaa!');
                             })
                         })
