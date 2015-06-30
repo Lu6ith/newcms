@@ -18,6 +18,7 @@ angular
                     function (data) {
                         contactsRequest.delete(_.pick(data, 'id'), function (responseData) {
                             var itemindex = _.indexOf(contactsInterface.items, item);
+                            console.log('Index of kontakt - ', itemindex);
                             contactsInterface.items.splice(itemindex, 1);
                             $timeout(function () {
                                 alert('usunięto!');

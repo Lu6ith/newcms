@@ -8,6 +8,7 @@
         <input-dctv type="text"
                     model="data.numer"
                     required="true"
+                    placeholder="Numer delegacji/zlecenia"
                     error-msg="errorMsg">
             Numer delegacji:
         </input-dctv>
@@ -23,6 +24,7 @@
                     model="data.do"
                     required="true"
                     minlength="5"
+                    placeholder="Nazwa stacji lub miejsce pracy"
                     error-msg="errorMsg">
             Dokąd:
         </input-dctv>
@@ -31,6 +33,7 @@
                     model="data.srtrans"
                     required="true"
                     minlength="5"
+                    placeholder="Nr. rej. samochodu lub inna nazwa"
                     error-msg="errorMsg">
             Środek transp.:
         </input-dctv>
@@ -38,7 +41,7 @@
         <input-dctv type="number"
                     model="data.kilometry"
                     required="true"
-                    minlength="2"
+                    minlength="1"
                     min = "0"
                     max = "600"
                     error-msg="errorMsg">

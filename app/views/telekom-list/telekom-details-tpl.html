@@ -97,7 +97,7 @@
                                         <td>{{dyzur.datakonc}}</td>
                                         <td>{{dyzur.grupa}}</td>
                                         <td>
-                                            <a href="#" role="button" class="delete" ng-click="del(dyzur.id)">
+                                            <a href="#" role="button" class="delete" ng-click="del(dyzur)">
                                                 <span class="glyphicon glyphicon-remove text-danger btn-sm" aria-hidden="true"></span>
                                             </a>
                                         </td>
@@ -130,19 +130,19 @@
                                 <thead>
                                 <tr class="warning">
                                     <th data-field="datapocz" class="col-md-1">
-                                        <i class="glyphicon glyphicon-circle-arrow-right"></i>
+                                        <i class="glyphicon glyphicon-asterisk"></i>
                                         Numer
                                     </th>
                                     <th data-field="datakonc" class="col-md-2">
-                                        <i class="glyphicon glyphicon-circle-arrow-left"></i>
+                                        <i class="glyphicon glyphicon-calendar"></i>
                                         Data
                                     </th>
                                     <th data-field="grupa" class="col-md-2">
-                                        <i class="glyphicon glyphicon-certificate"></i>
+                                        <i class="glyphicon glyphicon-road"></i>
                                         Dokąd
                                     </th>
                                     <th data-field="grupa" class="col-md-2">
-                                        <i class="glyphicon glyphicon-certificate"></i>
+                                        <i class="glyphicon glyphicon-plane"></i>
                                         Środek transp.
                                     </th>
                                     <th data-field="grupa" class="col-md-2">
@@ -150,7 +150,7 @@
                                         Kilometry
                                     </th>
                                     <th data-field="grupa" class="col-md-2">
-                                        <i class="glyphicon glyphicon-certificate"></i>
+                                        <i class="glyphicon glyphicon-hourglass"></i>
                                         Nadgodziny
                                     </th>
                                     <th class="col-md-1">
@@ -167,7 +167,7 @@
                                     <td>{{delegac.kilometry}}</td>
                                     <td>{{delegac.nadgodziny}}</td>
                                     <td>
-                                        <a href="#" role="button" class="delete" ng-click="deldel(delegac.id)">
+                                        <a href="#" role="button" class="delete" ng-click="deldel(delegac)">
                                             <span class="glyphicon glyphicon-remove text-danger btn-sm" aria-hidden="true"></span>
                                         </a>
                                     </td>
@@ -189,17 +189,17 @@
                             <div class="col-lg-6">
                                 <ul class="list-group">
                                     <li class="list-group-item">Suma przejechanych kilometrów:
-                                        <span class="badge"><em><b>{{sumakil}}</b></em></span></li>
+                                        <span class="badge"><em><b>{{telekomsInterface.sumakil}}</b></em></span></li>
                                     <li class="list-group-item">Suma przejechanych kilometrów w b.miesiącu:
-                                        <span class="badge"><em><b>{{sumies}}</b></em></span></li>
+                                        <span class="badge"><em><b>{{telekomsInterface.sumies}}</b></em></span></li>
                                 </ul>
                             </div>
                             <div class="col-lg-6">
                                 <ul class="list-group">
                                     <li class="list-group-item">Ogólna liczba nadgodzin:
-                                        <span class="badge"><em><b>{{sumagodz}}</b></em></span></li>
+                                        <span class="badge"><em><b>{{telekomsInterface.sumagodz}}</b></em></span></li>
                                     <li class="list-group-item">liczba nadgodzin w b.miesiącu:
-                                        <span class="badge"><em><b>{{sumnad}}</b></em></span></li>
+                                        <span class="badge"><em><b>{{telekomsInterface.sumnad}}</b></em></span></li>
                                 </ul>
                             </div>
                         </div>

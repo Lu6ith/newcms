@@ -29,6 +29,7 @@ angular
 
                 tpl.attr({
                     required: 'required',
+                    placeholder: attrs.placeholder,
                     'ng-model': 'model',
                     'ng-minlength': attrs.minlength || 3
                 });

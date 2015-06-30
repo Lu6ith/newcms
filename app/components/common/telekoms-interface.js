@@ -32,7 +32,7 @@ angular
                     item,
                     'sm',
                     function (data) {
-                        dyzuryRequest.delete({id: item}, function (responseData) {
+                        dyzuryRequest.delete(_.pick(data, 'id'), function (responseData) {
                             var itemindex = _.indexOf(telekomsInterface.datadyzur, item);
                             telekomsInterface.datadyzur.splice(itemindex, 1);
                             $timeout(function () {
@@ -48,14 +48,18 @@ angular
                     item,
                     'sm',
                     function (data) {
-                        delegacjeRequest.delete({id: item}, function (responseData) {
+                        delegacjeRequest.delete(_.pick(data, 'id'), function (responseData) {
+                            var d = new Date();
                             var itemindex = _.indexOf(telekomsInterface.delegacje, item);
+                            telekomsInterface.sumakil -= parseInt(telekomsInterface.delegacje[itemindex].kilometry);
+                            telekomsInterface.sumagodz -= parseInt(telekomsInterface.delegacje[itemindex].nadgodziny);
+                            d = telekomsInterface.delegacje[itemindex].datadel;
+                            mies = $filter('date')(d, 'M' );
+                            telekomsInterface.datakm[0].values[mies - 1].value -= parseInt(telekomsInterface.delegacje[itemindex].kilometry);
+                            telekomsInterface.datandg[0].values[mies - 1].value -= parseInt(telekomsInterface.delegacje[itemindex].nadgodziny);
                             telekomsInterface.delegacje.splice(itemindex, 1);
 
                             $timeout(function () {
-                                $rootScope.sumakil -= parseInt(telekomsInterface.delegacje[itemindex].kilometry);
-                                $rootScope.sumagodz -= parseInt(telekomsInterface.delegacje[itemindex].nadgodziny);
-                                console.log('Del deleg: ', $rootScope.sumakil, $rootScope.sumagodz);
                                 alert('usunięto!');
                             })
                         })
@@ -84,8 +88,8 @@ angular
                     '',
                     function (data) {
                         data.idem = $rootScope.dataid;
-                        $filter('date')(data.datapocz, 'dd-MM-yyyy', 'GMT+0200');
-                        $filter('date')(data.datakonc, 'dd-MM-yyyy', 'GMT+0200');
+                        data.datapocz = $filter('date')(data.datapocz, 'yyyy-MM-dd', 'GMT+0200');
+                        data.datakonc = $filter('date')(data.datakonc, 'yyyy-MM-dd', 'GMT+0200');
                         console.log('Daty: ', data.datapocz, data.datakonc);
                         dyzuryRequest.add(data, function (responseData) {
                             //console.log('response',responseData );
@@ -102,16 +106,24 @@ angular
                     item,
                     '',
                     function (data) {
+                        var d = new Date();
                         data.idem = $rootScope.datadelid;
-                        $filter('date')(data.datadel, 'dd-MM-yyyy', 'GMT+0200');
+                        d = $filter('date')(data.datadel, 'yyyy-MM-dd', 'GMT+0200');
+                        data.datadel = d;
                         delegacjeRequest.add(data, function (responseData) {
                             //console.log('response',responseData );
                             telekomsInterface.delegacje.push(responseData);
 
                             $timeout(function () {
-                                $rootScope.sumakil += parseInt(responseData.kilometry);
-                                $rootScope.sumagodz += parseInt(responseData.nadgodziny);
-                                console.log('Add deleg: ', $rootScope.sumakil, $rootScope.sumagodz);
+                                var d = new Date();
+                                telekomsInterface.sumakil += parseInt(responseData.kilometry);
+                                telekomsInterface.sumagodz += parseInt(responseData.nadgodziny);
+                                //console.log('Add deleg: ', telekomsInterface.sumakil, telekomsInterface.sumagodz);
+
+                                d = responseData.datadel;
+                                mies = $filter('date')(d, 'M' );
+                                telekomsInterface.datakm[0].values[mies - 1].value += parseInt(responseData.kilometry);
+                                telekomsInterface.datandg[0].values[mies - 1].value += parseInt(responseData.nadgodziny);
                                 alert('Dodano delegację pracownikaa!');
                             })
                         })

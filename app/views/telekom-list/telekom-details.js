@@ -41,26 +41,20 @@ angular
             $scope.delegacje = data;
             telekomsInterface.delegacje = $scope.delegacje;
 
-            $scope.sumakil = $scope.sumkil();
-            $scope.sumagodz = $scope.sumgodz();
+            telekomsInterface.sumakil = $scope.sumkil();
+            telekomsInterface.sumagodz = $scope.sumgodz();
 
             $scope.kilmies();
             $scope.ndgmies();
 
             var d = new Date();
             var mies = $filter('date')(d, 'M' );
-            $scope.sumies = $scope.datakm[0].values[mies - 1].value;
-            $scope.sumnad = $scope.datandg[0].values[mies - 1].value;
+            telekomsInterface.sumies = $scope.datakm[0].values[mies - 1].value;
+            telekomsInterface.sumnad = $scope.datandg[0].values[mies - 1].value;
 
-            $rootScope.sumakil = $scope.sumakil;
-            $rootScope.sumagodz = $scope.sumagodz;
-            $rootScope.sumies = $scope.sumies;
-            $rootScope.sumnad = $scope.sumnad;
-            console.log('telekomsInterface - ', telekomsInterface.sumakil, telekomsInterface.sumagodz);
         });
 
-        $scope.sumakil = 0;
-        $scope.sumagodz = 0;
+        $scope.telekomsInterface = telekomsInterface;
 
         $scope.datakm = [{
             key: "Cumulative Return",
@@ -97,6 +91,9 @@ angular
                 { "label" : "XII" , "value" : 0 }
             ]
         }];
+
+        telekomsInterface.datakm = $scope.datakm;
+        telekomsInterface.datandg = $scope.datandg;
 
         $scope.optionskm = {
             chart: {
@@ -229,18 +226,16 @@ angular
         $scope.adddel = function () {
             $rootScope.datadelid = $scope.data.id;
             telekomsInterface.addeleg();
-            $scope.sumagodz = $rootScope.sumagodz;
-            $scope.sumakil = $rootScope.sumakil;
+            //console.log('response add delegac - ', $scope.sumakil, $scope.sumagodz);
         };
-        $scope.del = function (id) {
+        $scope.del = function (item) {
             $rootScope.dataid = $scope.data.id;
-            telekomsInterface.deletedyzur(id);
+            telekomsInterface.deletedyzur(item);
         };
-        $scope.deldel = function (id) {
+        $scope.deldel = function (item) {
             $rootScope.datadelid = $scope.data.id;
-            telekomsInterface.deletedeleg(id);
-            $scope.sumagodz = $rootScope.sumagodz;
-            $scope.sumakil = $rootScope.sumakil;
+            telekomsInterface.deletedeleg(item);
+            //console.log('response del delegac - ', $scope.sumakil, $scope.sumagodz);
         };
 
 /*        $scope.sumkil = _.reduce($scope.delegacje, function(del, o){
