@@ -238,6 +238,15 @@ angular
             //console.log('response del delegac - ', $scope.sumakil, $scope.sumagodz);
         };
 
+        $scope.updatedel = function (item) {
+            $rootScope.datadelid = $scope.data.id;
+            item.kilometry = parseInt(item.kilometry);
+            item.nadgodziny = parseInt(item.nadgodziny);
+            item.datadel = new Date(item.datadel);
+            telekomsInterface.updatedeleg(item);
+            //console.log('response del delegac - ', $scope.sumakil, $scope.sumagodz);
+        };
+
 /*        $scope.sumkil = _.reduce($scope.delegacje, function(del, o){
             for (var p in o)
                 del = del + o.kilometry[p];

@@ -49,7 +49,7 @@ angular
     .config(function ($urlRouterProvider, $resourceProvider, $httpProvider) {
         $resourceProvider.defaults.stripTrailingSlashes = false;
         $httpProvider.defaults.withCredentials = true;
-        $urlRouterProvider.otherwise('/product-list');
+        $urlRouterProvider.otherwise('/employees');
         //$httpProvider.interceptors.push('apiInterceptor');
     })
 
