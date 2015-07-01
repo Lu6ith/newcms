@@ -1,4 +1,10 @@
 <?php
+
+session_start();
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require 'Slim/Slim.php';
 //require_once 'dbHelper.php';
 
@@ -13,11 +19,30 @@ require 'CorsSlim.php';
 $corsOptions = array(
     "origin" => "http://localhost:8000",
     //"origin" => "*",
-    "allowCredentials" => True
+    "allowCredentials" => True,
+    "allowMethods" => "GET,POST,PUT,DELETE,OPTIONS"
     );
 
 $app->add(new \CorsSlim\CorsSlim($corsOptions));
 
+// respond to preflights
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+	header('Content-Type: application/json');
+	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+	header('Access-Control-Allow-Credentials: true');
+	header('Access-Control-Allow-Origin: http://localhost:8000');
+        echo '{"status": "OK"}';
+        exit;
+}
+
+// Audentication
+//--------------------------------------
+$app->get('/authorize/', 'checkUser');
+$app->post('/login/', 'login');
+$app->get('/logout/', 'logout');
+
+// Kontakty
+//--------------------------------------
 $app->get('/employees/', 'getEmployees');
 $app->get('/employees/:id', 'getEmployee');
 $app->get('/employees/:id/reports', 'getReports');
@@ -48,6 +73,48 @@ $app->post('/delegacje/', 'addDelegac');
 $app->delete('/delegacje/:id',	'delEmpDelegac');
 
 $app->run();
+
+function login() {
+	$request_body = file_get_contents("php://input");
+	$data = json_decode($request_body);
+	file_put_contents("test.txt", $data);
+	if($data->login != '' && $data->login == 'admin' && $data->pass != '' && $data->pass == 'admin') {
+    	$_SESSION['user'] = 'admin';
+    	echo '{"status": "OK", "user": "' . $data->login . '"}';
+    } else {
+    	echo '{"status":0, "error": "session expired"}';
+    }
+}
+
+
+function logout() {
+	session_destroy();
+    echo '{"status": "OK"}';
+}
+
+function checkUser(){
+	if(!empty($_SESSION['user'])) {
+		echo '{"status": "OK"}';
+	} else {
+		echo '{"status":0, "error": "session expired"}';
+	}
+}
+
+function authorize($role = "user") {
+
+    return function () use ( $role ) {
+        // Get the Slim framework object
+        $app = \Slim\Slim::getInstance();
+        // First, check to see if the user is logged in at all
+        if(!empty($_SESSION['user'])) {
+            return true;
+        }
+        else {
+            // If a user is not logged in at all, return a 401
+            $app->halt(401, 'You shall not pass!');
+        }
+    };
+}
 
 function getEmployees() {
 
