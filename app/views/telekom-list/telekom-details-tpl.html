@@ -92,7 +92,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="dyzur in datadyzur">
+                                    <tr ng-repeat="dyzur in datadyzur | orderBy: 'datapocz'">
                                         <td>{{dyzur.datapocz}}</td>
                                         <td>{{dyzur.datakonc}}</td>
                                         <td>{{dyzur.grupa}}</td>
@@ -106,6 +106,76 @@
                             </table>
                         </div>
                     </div>
+
+                    <div class="panel panel-info">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Zestawienie dyżurów w roku</h3>
+                        </div>
+                        <!--<div class="panel-body">
+                            <p>Sumaryczne podsumowanie dla pracownika</p>
+                        </div>-->
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Ogólna liczba dni duzurów w roku:
+                                        <span class="badge"><em><b>{{telekomsInterface.sumadyz}}</b></em></span></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="list-group">
+                                    <li class="list-group-item">liczba dni dyżurów w b.miesiącu:
+                                        <span class="badge"><em><b>{{telekomsInterface.sumabdyz}}</b></em></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Line -->
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <section class="panel panel-default">
+                                    <header class="panel-heading">
+                                        Dyżury w roku
+                                    </header>
+                                    <div class="panel-body text-center">
+                                        <br/>
+                                        <table class="table table-hover table-striped table-condensed table-bordered">
+                                            <thead>
+                                            <tr class="default">
+                                                <th class="col-md-1 text-center">I</th>
+                                                <th class="col-md-1 text-center">II</th>
+                                                <th class="col-md-1 text-center">III</th>
+                                                <th class="col-md-1 text-center">IV</th>
+                                                <th class="col-md-1 text-center">V</th>
+                                                <th class="col-md-1 text-center">VI</th>
+                                                <th class="col-md-1 text-center">VII</th>
+                                                <th class="col-md-1 text-center">VIII</th>
+                                                <th class="col-md-1 text-center">IX</th>
+                                                <th class="col-md-1 text-center">X</th>
+                                                <th class="col-md-1 text-center">XI</th>
+                                                <th class="col-md-1 text-center">XII</th>
+                                            </tr>
+                                            <tr>
+                                                <td class="active">15</td>
+                                                <td class="success">15</td>
+                                                <td class="warning">15</td>
+                                                <td class="danger">15</td>
+                                                <td class="info">15</td>
+                                                <td class="active">15</td>
+                                                <td class="active">15</td>
+                                                <td class="active">15</td>
+                                                <td class="active">15</td>
+                                                <td class="active">15</td>
+                                                <td class="active">15</td>
+                                                <td class="active">15</td>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+
                 </tab>
                 <tab>
                     <tab-heading>
@@ -159,7 +229,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="delegac in delegacje">
+                                <tr ng-repeat="delegac in delegacje | orderBy: 'datadel'">
                                     <td>{{delegac.numer}}</td>
                                     <td>{{delegac.datadel}}</td>
                                     <td>{{delegac.do}}</td>

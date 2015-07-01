@@ -19,16 +19,16 @@ angular
         }
     })
 
-    .service('userInterface', function ($cookieStore, $http, userState, CONFIG) {
+    .service('userInterface', function ($cookieStore, $http, userState, CONFIGC) {
         return {
             signIn: function (data) {
-                $http.post(CONFIG.API + 'login/', data)
+                $http.post(CONFIGC.API + 'login/', data)
                     .success(function (responseData) {
                         userState.setUserAccess(responseData.user, 'zalogowano pomyślnie');
                     })
             },
             signOut: function () {
-                $http.get(CONFIG.API + 'logout/')
+                $http.get(CONFIGC.API + 'logout/')
                     .success(function () {
                         userState.setUserAccess(false);
                     })
