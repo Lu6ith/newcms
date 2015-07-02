@@ -59,18 +59,18 @@ angular
         $scope.datakm = [{
             key: "Cumulative Return",
             values: [
-                { "label" : "I" , "value" : -29.765957771107 },
+                { "label" : "I" , "value" : 0 },
                 { "label" : "II" , "value" : 0 },
-                { "label" : "III" , "value" : 32.807804682612 },
-                { "label" : "IV" , "value" : 196.45946739256 },
-                { "label" : "V" , "value" : 0.19434030906893 },
-                { "label" : "VI" , "value" : -98.079782601442 },
-                { "label" : "VII" , "value" : -13.925743130903 },
-                { "label" : "VIII" , "value" : -5.1387322875705 },
-                { "label" : "IX" , "value" : -5.1387322875705 },
-                { "label" : "X" , "value" : -5.1387322875705 },
-                { "label" : "XI" , "value" : -5.1387322875705 },
-                { "label" : "XII" , "value" : -5.1387322875705 }
+                { "label" : "III" , "value" : 0 },
+                { "label" : "IV" , "value" : 0 },
+                { "label" : "V" , "value" : 0 },
+                { "label" : "VI" , "value" : 0 },
+                { "label" : "VII" , "value" : 0 },
+                { "label" : "VIII" , "value" : 0 },
+                { "label" : "IX" , "value" : 0 },
+                { "label" : "X" , "value" : 0 },
+                { "label" : "XI" , "value" : 0 },
+                { "label" : "XII" , "value" : 0 }
             ]
         }];
 
@@ -91,6 +91,69 @@ angular
                 { "label" : "XII" , "value" : 0 }
             ]
         }];
+
+        $scope.dnidyz = [
+            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
+              "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
+              "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
+              "dzien31": 0
+            },
+            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
+                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
+                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
+                "dzien31": 0
+            },
+            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
+                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
+                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
+                "dzien31": 0
+            },
+            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
+                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
+                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
+                "dzien31": 0
+            },
+            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
+                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
+                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
+                "dzien31": 0
+            },
+            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
+                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
+                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
+                "dzien31": 0
+            },
+            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
+                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
+                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
+                "dzien31": 0
+            },
+            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
+                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
+                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
+                "dzien31": 0
+            },
+            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
+                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
+                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
+                "dzien31": 0
+            },
+            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
+                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
+                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
+                "dzien31": 0
+            },
+            { "dzien1": 1, "dzien2": 1, "dzien3": 1,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
+                "dzien11": 0, "dzien12": 0, "dzien13": 1,"dzien14": 1,"dzien15": 1,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
+                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
+                "dzien31": 0
+            },
+            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
+                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
+                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
+                "dzien31": 0
+            }
+        ];
 
         telekomsInterface.datakm = $scope.datakm;
         telekomsInterface.datandg = $scope.datandg;

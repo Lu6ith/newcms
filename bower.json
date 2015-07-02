@@ -23,6 +23,7 @@
     "jquery-colorbox": "latest",
     "animate.css": "latest",
     "angular-breadcrumb": "latest",
-    "angular-nvd3": "latest"
+    "angular-nvd3": "latest",
+    "angularjs-toaster": "latest"
   }
 }

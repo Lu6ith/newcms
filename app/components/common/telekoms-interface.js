@@ -19,6 +19,7 @@ angular
                         telekomRequest.delete(_.pick(data, 'id'), function (responseData) {
                             var itemindex = _.indexOf(telekomsInterface.items, item);
                             telekomsInterface.items.splice(itemindex, 1);
+                            //toaster.pop('success', 'Pracownik został usunięty.');
                             $timeout(function () {
                                 alert('usunięto!');
                             })
@@ -35,6 +36,7 @@ angular
                         dyzuryRequest.delete(_.pick(data, 'id'), function (responseData) {
                             var itemindex = _.indexOf(telekomsInterface.datadyzur, item);
                             telekomsInterface.datadyzur.splice(itemindex, 1);
+                            //toaster.pop('success', 'Dyżur został usunięty.');
                             $timeout(function () {
                                 alert('usunięto!');
                             })
@@ -75,6 +77,7 @@ angular
                         telekomRequest.add(data, function (responseData) {
                             //console.log('response',responseData );
                             telekomsInterface.items.push(responseData);
+                            //toaster.pop('success', 'Dodano nowego pracownika.');
                             $timeout(function () {
                                 alert('Dodano nowego pracownika!');
                             })
@@ -94,6 +97,7 @@ angular
                         dyzuryRequest.add(data, function (responseData) {
                             //console.log('response',responseData );
                             telekomsInterface.datadyzur.push(responseData);
+                            aster.pop('success', 'Dodano dyżur pracownika.');
                             $timeout(function () {
                                 alert('Dodano dyżur pracownikaa!');
                             })
@@ -157,6 +161,7 @@ angular
                                 mies = $filter('date')(d, 'M' );
                                 telekomsInterface.datakm[0].values[mies - 1].value += parseInt(responseData.kilometry);
                                 telekomsInterface.datandg[0].values[mies - 1].value += parseInt(responseData.nadgodziny);
+                                //toaster.pop('success', 'Zmieniono delegację pracownika.');
                                 alert('Zmieniono delegację pracownikaa!');
                             })
                         })
