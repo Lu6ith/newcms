@@ -5,6 +5,94 @@ angular
     .module('myApp.telekomsInterface', [])
     .service('telekomsInterface', function (telekomRequest, dyzuryRequest, delegacjeRequest, modalSrv, $timeout, $rootScope, $filter) {
         var telekomsInterface = {
+
+            dnidyz: [
+                {
+                    "mies": "I",
+                    "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "mies": "II",
+                    "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "mies": "III",
+                    "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "mies": "IV",
+                    "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "mies": "V",
+                    "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "mies": "VI",
+                    "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "mies": "VII",
+                    "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "mies": "VIII",
+                    "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "mies": "IX",
+                    "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "mies": "X",
+                    "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "mies": "XI",
+                    "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "mies": "XII",
+                    "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                }
+            ],
+            sumadyz: 0,
+            sumabdyz: 0,
+
+            dyzwroku: function () {
+                var mies, dzp, dzk;
+                var dp = new Date();
+                var dk = new Date();
+                for (var i = 0; i < 12; i++) {
+                    for (var k = 0; k < 31; k++) {
+                        dk.setFullYear($rootScope.rokb);
+                        dk.setMonth(i + 1);
+                        dk.setDate(k + 1);
+                        telekomsInterface.dnidyz[i].value[k] = 0;
+                        if (dk.getDay() == 6 || dk.getDay() == 0) telekomsInterface.dnidyz[i].value[k] = 2;
+                    }
+                };
+                telekomsInterface.sumadyz = 0;
+                telekomsInterface.sumabdyz = 0;
+                for (var i = 0; i < telekomsInterface.datadyzur.length; i++) {
+                    var dyzur = telekomsInterface.datadyzur[i];
+                    dp = dyzur.datapocz;
+                    dk = dyzur.datakonc;
+                    mies = $filter('date')(dp, 'M');
+                    dzp = $filter('date')(dp, 'dd');
+                    dzk = $filter('date')(dk, 'dd');
+                    if ($filter('date')(dp, 'yyyy') == $rootScope.rokb) {
+                        for (var l = dzp; l <= dzk; l++) {
+                            telekomsInterface.dnidyz[mies - 1].value[l - 1] = 1;
+                            telekomsInterface.sumadyz += 1;
+                            if (mies == $rootScope.miesb) {
+                                telekomsInterface.sumabdyz += 1;
+                            };
+                        };
+                    }
+                }
+            },
+
             fetch: function () {
                 telekomRequest.fetch(function (responseData) {
                     telekomsInterface.items = responseData;
@@ -37,6 +125,7 @@ angular
                             var itemindex = _.indexOf(telekomsInterface.datadyzur, item);
                             telekomsInterface.datadyzur.splice(itemindex, 1);
                             //toaster.pop('success', 'Dyżur został usunięty.');
+                            telekomsInterface.dyzwroku();
                             $timeout(function () {
                                 alert('usunięto!');
                             })
@@ -56,7 +145,7 @@ angular
                             telekomsInterface.sumakil -= parseInt(telekomsInterface.delegacje[itemindex].kilometry);
                             telekomsInterface.sumagodz -= parseInt(telekomsInterface.delegacje[itemindex].nadgodziny);
                             d = telekomsInterface.delegacje[itemindex].datadel;
-                            mies = $filter('date')(d, 'M' );
+                            mies = $filter('date')(d, 'M');
                             telekomsInterface.datakm[0].values[mies - 1].value -= parseInt(telekomsInterface.delegacje[itemindex].kilometry);
                             telekomsInterface.datandg[0].values[mies - 1].value -= parseInt(telekomsInterface.delegacje[itemindex].nadgodziny);
                             telekomsInterface.delegacje.splice(itemindex, 1);
@@ -93,11 +182,12 @@ angular
                         data.idem = $rootScope.dataid;
                         data.datapocz = $filter('date')(data.datapocz, 'yyyy-MM-dd', 'GMT+0200');
                         data.datakonc = $filter('date')(data.datakonc, 'yyyy-MM-dd', 'GMT+0200');
-                        console.log('Daty: ', data.datapocz, data.datakonc);
+                        var self = this;
+                        //console.log('Daty: ', data.datapocz, data.datakonc);
                         dyzuryRequest.add(data, function (responseData) {
-                            //console.log('response',responseData );
                             telekomsInterface.datadyzur.push(responseData);
-                            aster.pop('success', 'Dodano dyżur pracownika.');
+                            //toaster.pop('success', 'Dodano dyżur pracownika.');
+                            telekomsInterface.dyzwroku();
                             $timeout(function () {
                                 alert('Dodano dyżur pracownikaa!');
                             })
@@ -127,7 +217,7 @@ angular
                                 //console.log('Add deleg: ', telekomsInterface.sumakil, telekomsInterface.sumagodz);
 
                                 d = responseData.datadel;
-                                mies = $filter('date')(d, 'M' );
+                                mies = $filter('date')(d, 'M');
                                 telekomsInterface.datakm[0].values[mies - 1].value += parseInt(responseData.kilometry);
                                 telekomsInterface.datandg[0].values[mies - 1].value += parseInt(responseData.nadgodziny);
                                 alert('Dodano delegację pracownikaa!');
@@ -158,7 +248,7 @@ angular
                                 //console.log('Add deleg: ', telekomsInterface.sumakil, telekomsInterface.sumagodz);
 
                                 d = responseData.datadel;
-                                mies = $filter('date')(d, 'M' );
+                                mies = $filter('date')(d, 'M');
                                 telekomsInterface.datakm[0].values[mies - 1].value += parseInt(responseData.kilometry);
                                 telekomsInterface.datandg[0].values[mies - 1].value += parseInt(responseData.nadgodziny);
                                 //toaster.pop('success', 'Zmieniono delegację pracownika.');

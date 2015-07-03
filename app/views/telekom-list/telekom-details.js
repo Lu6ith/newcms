@@ -36,6 +36,9 @@ angular
         responseDyzur.$promise.then(function (data) {
             $scope.datadyzur = data;
             telekomsInterface.datadyzur = $scope.datadyzur;
+            telekomsInterface.dyzwroku();
+            $scope.sumadyz = telekomsInterface.sumadyz;
+            $scope.sumabdyz = telekomsInterface.sumabdyz;
         });
         responseDelegacje.$promise.then(function (data) {
             $scope.delegacje = data;
@@ -55,6 +58,7 @@ angular
         });
 
         $scope.telekomsInterface = telekomsInterface;
+        $scope.rokb = $rootScope.rokb;
 
         $scope.datakm = [{
             key: "Cumulative Return",
@@ -92,71 +96,9 @@ angular
             ]
         }];
 
-        $scope.dnidyz = [
-            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
-              "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
-              "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
-              "dzien31": 0
-            },
-            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
-                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
-                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
-                "dzien31": 0
-            },
-            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
-                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
-                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
-                "dzien31": 0
-            },
-            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
-                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
-                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
-                "dzien31": 0
-            },
-            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
-                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
-                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
-                "dzien31": 0
-            },
-            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
-                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
-                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
-                "dzien31": 0
-            },
-            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
-                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
-                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
-                "dzien31": 0
-            },
-            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
-                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
-                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
-                "dzien31": 0
-            },
-            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
-                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
-                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
-                "dzien31": 0
-            },
-            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
-                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
-                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
-                "dzien31": 0
-            },
-            { "dzien1": 1, "dzien2": 1, "dzien3": 1,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
-                "dzien11": 0, "dzien12": 0, "dzien13": 1,"dzien14": 1,"dzien15": 1,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
-                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
-                "dzien31": 0
-            },
-            { "dzien1": 0, "dzien2": 0, "dzien3": 0,"dzien4": 0,"dzien5": 0,"dzien6": 0,"dzien7": 0,"dzien8": 0,"dzien9": 0,"dzien10": 0,
-                "dzien11": 0, "dzien12": 0, "dzien13": 0,"dzien14": 0,"dzien15": 0,"dzien16": 0,"dzien17": 0,"dzien18": 0,"dzien19": 0,"dzien20": 0,
-                "dzien21": 0, "dzien22": 0, "dzien23": 0,"dzien24": 0,"dzien25": 0,"dzien26": 0,"dzien27": 0,"dzien28": 0,"dzien29": 0,"dzien30": 0,
-                "dzien31": 0
-            }
-        ];
-
         telekomsInterface.datakm = $scope.datakm;
         telekomsInterface.datandg = $scope.datandg;
+        $scope.dnidyz = telekomsInterface.dnidyz ;
 
         $scope.optionskm = {
             chart: {

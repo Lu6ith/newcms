@@ -53,8 +53,11 @@ angular
         //$httpProvider.interceptors.push('apiInterceptor');
     })
 
-    .run(function ($rootScope, $cookieStore, userState) {
+    .run(function ($rootScope, $cookieStore, userState, $filter) {
+        var d = new Date();
         $rootScope.userState = userState;
         $rootScope._ = _;
+        $rootScope.miesb = $filter('date')(d, 'M' );
+        $rootScope.rokb = $filter('date')(d, 'yyyy' );
         userState.setUserAccess($cookieStore.get('logged'));
     });
