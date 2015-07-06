@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 	header('Access-Control-Allow-Credentials: true');
 	header('Access-Control-Allow-Origin: http://localhost:8000');
+	header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
         echo '{"status": "OK"}';
         exit;
 }
