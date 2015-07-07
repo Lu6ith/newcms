@@ -66,10 +66,11 @@ angular
                 for (var i = 0; i < 12; i++) {
                     for (var k = 0; k < 31; k++) {
                         dk.setFullYear($rootScope.rokb);
-                        dk.setMonth(i + 1);
+                        dk.setMonth(i);
                         dk.setDate(k + 1);
                         telekomsInterface.dnidyz[i].value[k] = 0;
                         if (dk.getDay() == 6 || dk.getDay() == 0) telekomsInterface.dnidyz[i].value[k] = 2;
+                        //console.log('weekendy: ', i+1, k+1, dk.getDay(), dk.toDateString());
                     }
                 };
                 telekomsInterface.sumadyz = 0;

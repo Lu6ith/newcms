@@ -96,6 +96,17 @@ angular
             ]
         }];
 
+        $scope.todos = [
+            {"ok": false, "tresc": "Musze to koniecznie dziś zrobić !"},
+            {"ok": true, "tresc": "Musze to koniecznie dziś zrobić !"},
+            {"ok": false, "tresc": "Musze to koniecznie dziś zrobić !"},
+            {"ok": false, "tresc": "Musze to koniecznie dziś zrobić !"},
+            {"ok": false, "tresc": "Musze to koniecznie dziś zrobić !"},
+            {"ok": true, "tresc": "Musze to koniecznie dziś zrobić !"}
+        ];
+
+        $scope.inputdo = "";
+
         telekomsInterface.datakm = $scope.datakm;
         telekomsInterface.datandg = $scope.datandg;
         $scope.dnidyz = telekomsInterface.dnidyz ;

@@ -353,7 +353,60 @@
                     <tab-heading>
                         <i class="glyphicon glyphicon-tasks"></i> TO DO
                     </tab-heading>
-                    <li ng-repeat="num in [7,8,9]">To jest mój kolejny numer {{num}}</li>
+                    <!--<li ng-repeat="num in [7,8,9]">To jest mój kolejny numer {{num}}</li>-->
+                    <div class="panel panel-success">
+
+                        <nav class="navbar navbar-inverse">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" href="#">SPRAWY DO ZROBIENIA <span class="label label-info">{{ todos.length }}</span></a>
+                                </div>
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <form class="navbar-form">
+                                    <div class="input-group input-group-sm col-md-7">
+                                        <input type="text" class="form-control input-lg" ng-model="inputdo" placeholder="Sprawa do zrobienia...">
+                                    </div>
+                                        <button type="button" class="btn btn-primary btn-sm pull-right"
+                                                ng-if="$root.userState.access"
+                                                ng-click="addtodo({item: data})">Dodaj do listy
+                                        </button>
+                                </form>
+                                </div>
+                            </div>
+                        </nav>
+                        <div class="panel-body">
+
+                            <table class="table table-hover table-striped table-condensed" id="todo-table">
+                                <thead>
+                                <tr class="warning">
+                                    <th data-field="datapocz" class="col-md-1">
+                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                        OK
+                                    </th>
+                                    <th data-field="datakonc" class="col-md-10">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                        Do zrobienia
+                                    </th>
+                                    <th class="col-md-1">
+                                        <i class="glyphicon glyphicon-wrench"></i>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="todo" ng:class="'editing-' + todo.editing + ' done-' + todo.ok" ng-repeat="todo in todos">
+                                    <td><input type="checkbox" aria-label="..." ng-model="todo.ok"></td>
+                                    <td class="todo.content">{{todo.tresc}}</td>
+                                    <td>
+                                        <a href="#" role="button" class="delete" ng-click="deltodo(todo)">
+                                            <span class="glyphicon glyphicon-remove text-danger btn-sm" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </tab>
             </tabset>
         </div>

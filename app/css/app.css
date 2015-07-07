@@ -205,3 +205,77 @@ header-strip*/
     width: 400px;
     height: 500px;
 }
+
+/*
+todo table*/
+
+#todo-table {
+    margin-top: 10px;
+}
+#todo-table tr {
+    padding: 12px 20px 11px 0;
+    position: relative;
+    /*font-size: 24px;
+    line-height: 1.1em;*/
+    border-bottom: 1px solid #cccccc;
+}
+#todo-table tr:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+}
+#todo-table tr.editing-true {
+    padding: 0;
+    border-bottom: 0;
+}
+#todo-table .editing-true .display,
+#todo-table .edit {
+    display: none;
+}
+#todo-table .editing-true .edit {
+    display: block;
+}
+#todo-table .editing-true input {
+    width: 444px;
+    font-size: 24px;
+    font-family: inherit;
+    margin: 0;
+    line-height: 1.6em;
+    border: 0;
+    outline: none;
+    padding: 10px 7px 0px 27px;
+    border: 1px solid #999999;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+}
+#todo-table .check {
+    position: relative;
+    top: 9px;
+    margin: 0 10px 0 7px;
+    float: left;
+}
+#todo-table tr.done-true {
+    text-decoration: line-through;
+    color: #979797;
+}
+#todo-table .todo-destroy {
+    position: absolute;
+    right: 5px;
+    top: 14px;
+    display: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    /*background: url(../img/destroy.png) no-repeat 0 0;*/
+}
+#todo-table tr:hover .todo-destroy {
+    display: block;
+}
+#todo-table .todo-destroy:hover {
+    background-position: 0 -20px;
+}
