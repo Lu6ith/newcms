@@ -2,12 +2,12 @@
  * Created by student on 2015-06-16.
  */
 angular
-    .module('myApp.contactsInterface', [])
-    .service('contactsInterface', function (contactsRequest, modalSrv, $timeout, $rootScope) {
-        var contactsInterface = {
+    .module('myApp.kategorieInterface', [])
+    .service('kategorieInterface', function (kategorieRequest, modalSrv, $timeout, $rootScope) {
+        var kategorieInterface = {
             fetch: function () {
-                contactsRequest.fetch(function (responseData) {
-                    contactsInterface.items = responseData;
+                kategorieRequest.fetch(function (responseData) {
+                    kategorieInterface.items = responseData;
                     //console.log('contactInterface - ', contactsInterface.items);
                 });
             },
@@ -16,10 +16,10 @@ angular
                     item,
                     'sm',
                     function (data) {
-                        contactsRequest.delete(_.pick(data, 'id'), function (responseData) {
-                            var itemindex = _.indexOf(contactsInterface.items, item);
-                            console.log('Index of kontakt - ', itemindex);
-                            contactsInterface.items.splice(itemindex, 1);
+                        kategorieRequest.delete(_.pick(data, 'id'), function (responseData) {
+                            var itemindex = _.indexOf(kategorieInterface.items, item);
+                            console.log('Index of kategorie - ', itemindex);
+                            kategorieInterface.items.splice(itemindex, 1);
                             $timeout(function () {
                                 alert('usunięto!');
                             });
@@ -32,23 +32,23 @@ angular
                     item,
                     '',
                     function (data) {
-                        data.title = 'pracownik';
-                        contactsRequest.add(data, function (responseData) {
+                        data.title = 'kategoria';
+                        kategorieRequest.add(data, function (responseData) {
                             console.log('response',responseData );
-                            contactsInterface.items.push(responseData);
+                            kategorieInterface.items.push(responseData);
                             $timeout(function () {
-                                alert('Dodano nowy kontakt!');
+                                alert('Dodano nową kategorię!');
                             });
                         });
                     });
             },
             update: function (item) {
-                contactsRequest.update(item, function () {
+                kategorieRequest.update(item, function () {
                     //productsInterface.items.push(responseData.data);
                     $rootScope.userState.unsavedData = false;
                 });
             }
 
         };
-        return contactsInterface;
+        return kategorieInterface;
     });

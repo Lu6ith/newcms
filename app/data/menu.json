@@ -17,6 +17,11 @@
       "icon": "fa-envelope"
     },
     {
+      "name": "Kategorie",
+      "link": "kategorie-list",
+      "icon": "fa-list-alt"
+    },
+    {
       "name": "Faq",
       "link": "faq",
       "icon": "fa-info-circle"

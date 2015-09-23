@@ -13,7 +13,7 @@ angular
                 url: "/:id",
                 templateUrl: "views/shop/shops-tpl.html",
                 controller: "ShopsCtrl"
-            })
+            });
     })
     .controller('ShopsCtrl', function ($scope , $http, CONFIG, $state) {
 
@@ -46,5 +46,5 @@ angular
             marker.setPosition(loc);
             marker.setMap($scope.map);
         }
-    })
+    });
 

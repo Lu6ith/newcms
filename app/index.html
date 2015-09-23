@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width user-scalable=no initial-scale=1">
+    <!-- bower:css -->
+    <!-- endinject -->
+    <!-- inject:css -->
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="libs/jquery-colorbox/example2/colorbox.css"/>
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.css"/>
@@ -14,6 +17,7 @@
     <link rel="stylesheet" href="css/app.css"/>
     <link rel="stylesheet" href="libs/angularjs-aside-menu/demo/css/menu.css"/>
     <link rel="stylesheet" href="libs/nvd3/nv.d3.css"/>
+    <!-- endinject -->
 
     <script src="libs/angular/angular.js"></script>
     <script src="libs/angular-sanitize/angular-sanitize.js"></script>
@@ -40,6 +44,7 @@
     <script src="views/product-list/product-list.js"></script>
     <script src="views/contact-list/contact-list.js"></script>
     <script src="views/telekom-list/telekom-list.js"></script>
+    <script src="views/kategorie/kategorie-list.js"></script>
     <script src="views/product/product-details.js"></script>
     <script src="views/contact-list/contact-details.js"></script>
     <script src="views/telekom-list/telekom-details.js"></script>
@@ -49,6 +54,7 @@
     <script src="components/common/products-interface.js"></script>
     <script src="components/common/contacts-interface.js"></script>
     <script src="components/common/telekoms-interface.js"></script>
+    <script src="components/common/kategorie-interface.js"></script>
     <script src="components/common/security.js"></script>
     <script src="components/modal/modal.js"></script>
     <script src="components/filters/filters.js"></script>
@@ -57,6 +63,7 @@
     <script src="components/request/telekom-request.js"></script>
     <script src="components/request/dyzury-request.js"></script>
     <script src="components/request/delegacje-request.js"></script>
+    <script src="components/request/kategorie-request.js"></script>
     <script src="components/directives/product-item/product-item-dctv.js"></script>
     <script src="components/directives/contact-item/contact-item-dctv.js"></script>
     <script src="components/directives/telekom-item/telekom-item-dctv.js"></script>
@@ -65,6 +72,7 @@
     <script src="components/directives/list-drop-down/drop-down-dctv.js"></script>
     <script src="components/directives/header-strip/header-strip-dctv.js"></script>
     <script src="components/directives/input/input-dctv.js"></script>
+    <script src="components/directives/kategorie-item/kategorie-item-dctv.js"></script>
     <!--<script src="components/chartsjs/chartjs-custom.js"></script>-->
     <!-- endinject -->
     <!-- endbuild -->
@@ -76,10 +84,14 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
+<div class="page-header">
+    <h1>Baza wiedzy TW  <small>kontakty, adresy, delegacje ... etc.</small></h1>
+</div>
+
 <div class="pull-left left-container visible-md visible-lg">
     <div class="nav-header">
         <strong>{{$root.userState.user}}</strong>
-        <img src="assets/admin.png" width="70" />
+        <img src="assets/technical-support-2.png" width="80" />
     </div>
     <aside-menu items="data/menu.json"></aside-menu>
 </div>
@@ -98,6 +110,15 @@
         </div>
     </footer>
 </div>
+<!-- bower:js -->
+<!-- endinject -->
+<!-- inject:js -->
+<!-- endinject -->
+<!--<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>-->
 
 </body>
 </html>

@@ -2,8 +2,8 @@
  * Created by student on 2015-06-16.
  */
 angular
-    .module('myApp.telekomItemDctv', [])
-    .directive('telekomItemDctv', function ($timeout) {
+    .module('myApp.kategorieItemDctv', [])
+    .directive('kategorieItemDctv', function ($timeout) {
         return {
             restrict: "E",
             scope: {
@@ -11,7 +11,7 @@ angular
                 update: "&",
                 delete: "&"
             },
-            templateUrl: "components/directives/telekom-item/telekom-item-tpl.html",
+            templateUrl: "components/directives/kategorie-item/kategorie-item-tpl.html",
             controller: function ($scope) {
 
                 // tworz� kopi� price
@@ -31,4 +31,4 @@ angular
                 });*/
             }
         }
-    });
+    })

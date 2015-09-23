@@ -16,7 +16,7 @@ angular
                 access ? $cookieStore.put('logged', this.user) : $cookieStore.remove('logged');
                 msg && alert(msg);
             }
-        }
+        };
     })
 
     .service('userInterface', function ($cookieStore, $http, userState, CONFIGC) {
@@ -25,15 +25,15 @@ angular
                 $http.post(CONFIGC.API + 'login/', data)
                     .success(function (responseData) {
                         userState.setUserAccess(responseData.user, 'zalogowano pomyślnie');
-                    })
+                    });
             },
             signOut: function () {
                 $http.get(CONFIGC.API + 'logout/')
                     .success(function () {
                         userState.setUserAccess(false);
-                    })
+                    });
             }
-        }
+        };
     })
 
     .service('apiInterceptor', function ($q, userState) {

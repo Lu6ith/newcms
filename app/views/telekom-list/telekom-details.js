@@ -27,7 +27,7 @@ angular
                         return delegacjeRequest.fetch({id: $stateParams.id});
                     }
                 }
-            })
+            });
     })
     .controller('telekomDetailsCtrl', function ($scope, $rootScope, responseData, responseDyzur, responseDelegacje, telekomRequest, dyzuryRequest, telekomsInterface, $filter) {
         responseData.$promise.then(function (data) {
@@ -200,7 +200,7 @@ angular
             for(var i=0; i < 12; i++){
                 $scope.datakm[0].values[i].value = 0;
             }
-            for(var i = 0; i < $scope.delegacje.length; i++){
+            for( i = 0; i < $scope.delegacje.length; i++){
                 var deleg = $scope.delegacje[i];
                 d = deleg.datadel;
                 mies = $filter('date')(d, 'M' );
@@ -214,7 +214,7 @@ angular
             for(var i=0; i < 12; i++){
                 $scope.datandg[0].values[i].value = 0;
             }
-            for(var i = 0; i < $scope.delegacje.length; i++){
+            for( i = 0; i < $scope.delegacje.length; i++){
                 var deleg = $scope.delegacje[i];
                 d = deleg.datadel;
                 mies = $filter('date')(d, 'M' );
@@ -233,7 +233,7 @@ angular
                 function (responseData) {
                     $scope.$root.unsaved = !responseData.status;
                     alert('zmiany zapisane');
-                })
+                });
         };
         $scope.add = function () {
             $rootScope.dataid = $scope.data.id;

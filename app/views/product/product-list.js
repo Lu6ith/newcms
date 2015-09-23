@@ -9,7 +9,7 @@ angular
                 url: "/product-list",
                 templateUrl: "views/product/product-tpl.html",
                 controller: "productListCtrl"
-            })
+            });
     })
     .controller('productListCtrl', function ($scope, productsInterface) {
         productsInterface.fetch();
@@ -18,5 +18,5 @@ angular
         $scope.paginationSettings = {
             currentPage: 1,
             itemsPerPage: 5
-        }
-    })
+        };
+    });

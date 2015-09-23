@@ -21,4 +21,4 @@ angular
                 $scope.itemsPerPage = 10;
                 $scope.maxSize = 5;
             });
-    })
+    });

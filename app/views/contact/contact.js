@@ -9,7 +9,7 @@ angular
             url: "/contact",
             templateUrl: "views/contact/contact-tpl.html",
             controller: "ContactCtrl"
-        })
+        });
     })
     .controller('ContactCtrl', function ($scope) {
         $scope.sendMessage = function () {
@@ -20,5 +20,5 @@ angular
             } else {
                 $scope.errorMsg = true;
             }
-        }
-    })
+        };
+    });

@@ -8,11 +8,23 @@ body {
     font-family: "ubuntu", sans-serif;
     font-size: 13px;
     color: #676a6c;
-    /*background: url("patterns/squairy_light_@2X.png") scroll center center rgb(74, 74, 74);*/
+    background: url("patterns/crossword.png") scroll center center rgb(74, 74, 74);
 }
 
 /*
 left*/
+.page-header {
+    background-color: #395870;
+}
+
+.page-header h1 {
+    color: #111111;
+    margin-left: 40px;
+}
+
+.page-header h1 small {
+    margin-left: 40px;
+}
 
 .left-container {
     z-index: 1;
@@ -26,6 +38,15 @@ left*/
     padding: 20px 15px;
     background: url("patterns/header-profile.png") no-repeat;
     color: white;
+}
+
+.nav-header img {
+    padding-left: 20px;
+    width: 60%;
+}
+
+.panel-body p {
+    background-color: #E0FFFF;
 }
 
 /*
@@ -278,4 +299,8 @@ todo table*/
 }
 #todo-table .todo-destroy:hover {
     background-position: 0 -20px;
+}
+
+#colpracinfo {
+    background-color: #F3F3F4;
 }

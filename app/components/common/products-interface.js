@@ -20,8 +20,8 @@ angular
                             productsInterface.items.splice(itemindex, 1);
                             $timeout(function () {
                                 alert('usunięto!');
-                            })
-                        })
+                            });
+                        });
                     });
             },
 
@@ -32,14 +32,14 @@ angular
                     function (data) {
                         productsRequest.add(data, function (responseData) {
                             productsInterface.items.push(responseData.data);
-                        })
+                        });
                     });
             },
             update: function (item) {
                 productsRequest.update(item, function () {
                     //productsInterface.items.push(responseData.data);
                     $rootScope.userState.unsavedData = false;
-                })
+                });
             }
 
         };

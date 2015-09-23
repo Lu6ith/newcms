@@ -22,6 +22,6 @@ describe('FaqCtrl', function () {
         expect(scope.items).toBeUndefined();
         $httpBackend.flush();
         expect(scope.items.length).toBe(3);
-    }))
+    }));
 
-})
+});

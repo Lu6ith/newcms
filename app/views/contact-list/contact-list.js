@@ -24,6 +24,6 @@ angular
         $scope.paginationSettings = {
             currentPage: 1,
             itemsPerPage: 10
-        }
+        };
 
-    })
+    });

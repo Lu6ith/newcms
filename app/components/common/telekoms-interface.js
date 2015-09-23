@@ -69,13 +69,13 @@ angular
                         dk.setMonth(i);
                         dk.setDate(k + 1);
                         telekomsInterface.dnidyz[i].value[k] = 0;
-                        if (dk.getDay() == 6 || dk.getDay() == 0) telekomsInterface.dnidyz[i].value[k] = 2;
+                        if (dk.getDay() == 6 || dk.getDay() === 0) telekomsInterface.dnidyz[i].value[k] = 2;
                         //console.log('weekendy: ', i+1, k+1, dk.getDay(), dk.toDateString());
                     }
-                };
+                }
                 telekomsInterface.sumadyz = 0;
                 telekomsInterface.sumabdyz = 0;
-                for (var i = 0; i < telekomsInterface.datadyzur.length; i++) {
+                for (i = 0; i < telekomsInterface.datadyzur.length; i++) {
                     var dyzur = telekomsInterface.datadyzur[i];
                     dp = dyzur.datapocz;
                     dk = dyzur.datakonc;
@@ -88,8 +88,8 @@ angular
                             telekomsInterface.sumadyz += 1;
                             if (mies == $rootScope.miesb) {
                                 telekomsInterface.sumabdyz += 1;
-                            };
-                        };
+                            }
+                        }
                     }
                 }
             },
@@ -111,8 +111,8 @@ angular
                             //toaster.pop('success', 'Pracownik został usunięty.');
                             $timeout(function () {
                                 alert('usunięto!');
-                            })
-                        })
+                            });
+                        });
                     });
             },
 
@@ -129,8 +129,8 @@ angular
                             telekomsInterface.dyzwroku();
                             $timeout(function () {
                                 alert('usunięto!');
-                            })
-                        })
+                            });
+                        });
                     });
             },
 
@@ -153,8 +153,8 @@ angular
 
                             $timeout(function () {
                                 alert('usunięto!');
-                            })
-                        })
+                            });
+                        });
                     });
             },
 
@@ -170,8 +170,8 @@ angular
                             //toaster.pop('success', 'Dodano nowego pracownika.');
                             $timeout(function () {
                                 alert('Dodano nowego pracownika!');
-                            })
-                        })
+                            });
+                        });
                     });
             },
 
@@ -191,8 +191,8 @@ angular
                             telekomsInterface.dyzwroku();
                             $timeout(function () {
                                 alert('Dodano dyżur pracownikaa!');
-                            })
-                        })
+                            });
+                        });
                     });
             },
 
@@ -222,8 +222,8 @@ angular
                                 telekomsInterface.datakm[0].values[mies - 1].value += parseInt(responseData.kilometry);
                                 telekomsInterface.datandg[0].values[mies - 1].value += parseInt(responseData.nadgodziny);
                                 alert('Dodano delegację pracownikaa!');
-                            })
-                        })
+                            });
+                        });
                     });
             },
 
@@ -254,8 +254,8 @@ angular
                                 telekomsInterface.datandg[0].values[mies - 1].value += parseInt(responseData.nadgodziny);
                                 //toaster.pop('success', 'Zmieniono delegację pracownika.');
                                 alert('Zmieniono delegację pracownikaa!');
-                            })
-                        })
+                            });
+                        });
                     });
             },
 
@@ -263,7 +263,7 @@ angular
                 telekomRequest.update(item, function () {
                     //productsInterface.items.push(responseData.data);
                     $rootScope.userState.unsavedData = false;
-                })
+                });
             }
 
         };

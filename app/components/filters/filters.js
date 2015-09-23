@@ -7,5 +7,5 @@ angular
             }
             var start = (currentPage - 1) * itemsPerPage;
             return input.slice(start);
-        }
+        };
     });

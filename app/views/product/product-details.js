@@ -21,18 +21,18 @@ angular
                         return productsRequest.fetch({id: $stateParams.id});
                     }
                 }
-            })
+            });
     })
     .controller('ProductDetailsCtrl', function ($scope, responseData, productsRequest) {
         responseData.$promise.then(function (data) {
             $scope.data = data.data;
-        })
+        });
         $scope.$root.unsaved = true;
         $scope.update = function () {
             productsRequest.update($scope.data,
                 function (responseData) {
                     $scope.$root.unsaved = !responseData.status;
                     alert('zmiany zapisane');
-                })
-        }
+                });
+        };
     });

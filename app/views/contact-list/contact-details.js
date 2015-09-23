@@ -21,18 +21,18 @@ angular
                         return contactsRequest.fetchone({id: $stateParams.id});
                     }
                 }
-            })
+            });
     })
     .controller('ContactDetailsCtrl', function ($scope, responseData, contactsRequest) {
         responseData.$promise.then(function (data) {
             $scope.data = data;
-        })
+        });
         $scope.$root.unsaved = true;
         $scope.update = function () {
             contactsRequest.update($scope.data,
                 function (responseData) {
                     $scope.$root.unsaved = !responseData.status;
                     alert('zmiany zapisane');
-                })
-        }
+                });
+        };
     });
