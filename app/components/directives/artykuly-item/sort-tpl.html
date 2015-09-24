@@ -1,0 +1,9 @@
+<div class="sort"
+     ng-click="sorting()">
+    <span ng-transclude></span>
+    <span ng-class="{'btn btn-xs btn-primary': (sortSettings.sortBy == sortName)}">
+        <i class="glyphicon"
+           ng-class="{'glyphicon-sort-by-attributes': (!sortSettings.desc || sortSettings.sortBy != sortName),
+           'glyphicon-sort-by-attributes-alt': (sortSettings.desc || sortSettings.sortBy != sortName)}"></i>
+    </span>
+</div>

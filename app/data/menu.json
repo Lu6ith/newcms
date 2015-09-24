@@ -17,9 +17,14 @@
       "icon": "fa-envelope"
     },
     {
-      "name": "Kategorie",
+      "name": "KnowHow",
       "link": "kategorie-list",
       "icon": "fa-list-alt"
+    },
+    {
+      "name": "Artykuły",
+      "link": "artykuly-list",
+      "icon": "fa-folder-open"
     },
     {
       "name": "Faq",

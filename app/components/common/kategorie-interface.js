@@ -12,7 +12,7 @@ angular
                 });
             },
             delete: function (item) {
-                modalSrv.show('components/modal/modal-remove-contact-tpl.html',
+                modalSrv.show('components/modal/modal-remove-kategorie-tpl.html',
                     item,
                     'sm',
                     function (data) {
@@ -28,7 +28,7 @@ angular
             },
 
             add: function (item) {
-                modalSrv.show('components/modal/modal-add-contact-tpl.html',
+                modalSrv.show('components/modal/modal-add-kategorie-tpl.html',
                     item,
                     '',
                     function (data) {

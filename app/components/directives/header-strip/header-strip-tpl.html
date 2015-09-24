@@ -8,8 +8,13 @@
             </a>-->
             <a class="btn btn-info btn-add" ng-click="contactsInterface.add()">
                 <i class="fa fa-plus"></i>
-                dodaj kontakt
+                dodaj kontakt  {{ncyBreadcrumb}}
             </a>
+            <a class="btn btn-info btn-add" ng-click="kategorieInterface.add()">
+                <i class="fa fa-plus"></i>
+                dodaj karegorię
+            </a>
+
         </li>
         <li ng-if="$root.userState.unsavedData">
             <a class="header-strip-btn">

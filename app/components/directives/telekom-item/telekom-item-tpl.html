@@ -13,7 +13,7 @@
         <div class="truncate">{{item.cellPhone}}</div>
     </div>
 
-    <div class="col-lg-2">
+    <div class="col-lg-3">
         <div><a href="mailto:#">{{item.email}}</a></div>
     </div>
 
@@ -32,7 +32,7 @@
         <span ng-if="item.tags.substring(0,9) == 'TW - Info'" class="label label-warning">{{item.tags}}</span>
     </div>
 
-    <div class="col-lg-2 text-right">
+    <div class="col-lg-1 text-right">
 
         <div class="form-group">
             <button class="btn btn-danger btn-xs" ng-click="delete({item: item})" data-toggle="tooltip" data-placement="top" title="Usuń">

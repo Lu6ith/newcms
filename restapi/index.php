@@ -73,6 +73,20 @@ $app->put('/delegacje/:idem', 'updateEmpDelegac');
 $app->post('/delegacje/', 'addDelegac');
 $app->delete('/delegacje/:id',	'delEmpDelegac');
 
+// Kategorie 
+//---------------------------------------
+$app->get('/kategorie/', 'getKatAll');
+$app->get('/kategorie/:idem', 'getKategoria');
+$app->put('/kategorie/:idem', 'updateKategoria');
+$app->post('/kategorie/', 'addKategoria');
+$app->delete('/kategorie/:id',  'delKategoria');
+
+// Artykuły
+//---------------------------------------
+$app->get('/artykuly/', 'getArtykuly');
+$app->get('/kategorie/:idem/artykuly/', 'getKatArtykuly');
+$app->get('/artykuly/:idem', 'getArtykul');
+
 $app->run();
 
 function login() {
@@ -644,6 +658,217 @@ function updateEmpDelegac($id) {
 	} catch(PDOException $e) {
 		echo '{"error":{"text":'. $e->getMessage() .'}}';
 	}
+}
+
+//------------------  K A T E G O R I E   -------------------------------------
+function getKatAll() {
+
+    $sql = "select e.id, e.kategoria, e.opis, e.idup " .
+            "from kategorie e ".
+            "order by e.id, e.idup";
+    try {
+        $db = getConnection();
+        $stmt = $db->query($sql);
+        $kategorie = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+
+        // Include support for JSONP requests
+        if (!isset($_GET['callback'])) {
+            echo json_encode($kategorie);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($kategorie) . ');';
+        }
+
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+    //echo "go";
+}
+
+function getKategoria($idem) {
+    global $app;
+
+    $sql = "select e.id, e.kategoria, e.opis, e.idup " .
+            "from kategorie e " .
+            "where e.id = :idem";
+    try {
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("idem", $idem);
+        $stmt->execute();
+        $kategoria = $stmt->fetchObject();
+        $db = null;
+        $app->status(200);
+        $app->contentType('application/json');
+
+        // Include support for JSONP requests
+        if (!isset($_GET['callback'])) {
+            echo json_encode($kategoria);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($kategoria) . ');';
+        }
+
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+    //echo "go";
+}
+
+function updateKategoria($id) {
+    global $app;
+
+	$request = Slim::getInstance()->request();
+	$body = $request->getBody();
+	$wine = json_decode($body);
+	$sql = "UPDATE kategorie SET kategoria=:kategoria, opis=:opis WHERE id=:id";
+	try {
+		$db = getConnection();
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam("kategoria", $wine->kategoria);
+		$stmt->bindParam("opis", $wine->opis);
+		$stmt->bindParam("id", $id);
+		$stmt->execute();
+		$db = null;
+		$app->status(200);
+        $app->contentType('application/json');
+
+		//$app->response()->header('Content-Type', 'application/json');
+        // Include support for JSONP requests
+        if (!isset($_GET['callback'])) {
+            echo json_encode($wine);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($wine) . ');';
+        };
+		//echo json_encode($wine);
+	} catch(PDOException $e) {
+		echo '{"error":{"text":'. $e->getMessage() .'}}';
+	}
+}
+
+function addKategoria() {
+    global $app;
+
+	$request = Slim::getInstance()->request();
+	$body = $request->getBody();
+	$wine = json_decode($body);
+	$sql = "INSERT INTO kategorie SET kategoria=:kategoria, opis=:opis";
+	try {
+		$db = getConnection();
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam("kategoria", $wine->kategoria);
+		$stmt->bindParam("opis", $wine->opis);
+		$stmt->execute();
+		$wine->id = $db->lastInsertId();
+		$db = null;
+		$app->status(200);
+        $app->contentType('application/json');
+
+		//$app->response()->header('Content-Type', 'application/json');
+        // Include support for JSONP requests
+        if (!isset($_GET['callback'])) {
+            echo json_encode($wine);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($wine) . ');';
+        };
+		//echo json_encode($wine);
+	} catch(PDOException $e) {
+		echo '{"error":{"text":'. $e->getMessage() .'}}';
+	}
+}
+
+function delKategoria($id) {
+	$sql = "DELETE FROM kategorie WHERE id=:id";
+	try {
+		$db = getConnection();
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam("id", $id);
+		$stmt->execute();
+		$db = null;
+	} catch(PDOException $e) {
+		echo '{"error":{"text":'. $e->getMessage() .'}}';
+	}
+}
+
+//------------------  A R T Y K U L Y   -------------------------------------
+function getArtykuly() {
+
+    $sql = "select e.id, e.idkat, e.tytul, e.autor, e.data, e.plik " .
+            "from artykuly e ".
+            "order by e.idkat, e.data";
+    try {
+        $db = getConnection();
+        $stmt = $db->query($sql);
+        $artykuly = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+
+        // Include support for JSONP requests
+        if (!isset($_GET['callback'])) {
+            echo json_encode($artykuly);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($artykuly) . ');';
+        }
+
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+    //echo "go";
+}
+
+function getArtykul($idem) {
+    global $app;
+
+    $sql = "select e.id, e.idkat, e.tytul, e.autor, e.data, e.plik ".
+           "from artykuly e ".
+           "where e.id = :idem";
+    try {
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("idem", $idem);
+        $stmt->execute();
+        $artykul = $stmt->fetchObject();
+        $db = null;
+        $app->status(200);
+        $app->contentType('application/json');
+
+        // Include support for JSONP requests
+        if (!isset($_GET['callback'])) {
+            echo json_encode($artykul);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($artykul) . ');';
+        }
+
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+    //echo "go";
+}
+
+function getKatArtykuly($idem) {
+
+    $sql = "select e.id, e.idkat, e.tytul, e.autor, e.data, e.plik " .
+            "from artykuly e ".
+            "where e.idkat = :idem ".
+            "order by e.data";
+    try {
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("idem", $idem);
+        $stmt->execute();
+        // $stmt = $db->query($sql);
+        $artykuly = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+
+        // Include support for JSONP requests
+        if (!isset($_GET['callback'])) {
+            echo json_encode($artykuly);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($artykuly) . ');';
+        }
+
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+    //echo "go";
 }
 
 function getConnection() {

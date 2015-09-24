@@ -1,0 +1,19 @@
+<form name="deleteForm" novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">
+            Usunięcie kategorii: {{ data.kategoria }}
+        </h3>
+    </div>
+    <div class="modal-body">
+        <input-dctv type="textarea"
+                    model="data.reason"
+                    required="true"
+                    error-msg="errorMsg">
+            Podaj przyczynę
+        </input-dctv>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok(deleteForm.$valid)">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</form>

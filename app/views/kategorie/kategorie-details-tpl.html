@@ -1,0 +1,23 @@
+<div class="contact">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label for="kategoria">kategoria</label>
+                <input id="kategoria" class="form-control"
+                          type="text"
+                          ng-model="data.kategoria"
+                          ng-disabled="!$root.userState.access">
+            </div>
+
+            <div class="form-group">
+                <label for="opis">opis</label>
+                <input id="opis" class="form-control"
+                          type="text"
+                          ng-model="data.opis"
+                          ng-disabled="!$root.userState.access">
+            </div>
+
+            <button class="btn btn-primary" ng-if="$root.userState.access" ng-click="update()">zapisz zmiany</button>
+        </div>
+    </div>
+</div>

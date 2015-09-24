@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Czas wygenerowania: 25 Cze 2015, 13:36
--- Wersja serwera: 5.5.43
--- Wersja PHP: 5.4.41-0+deb7u1
+-- Czas wygenerowania: 24 Wrz 2015, 13:16
+-- Wersja serwera: 5.5.44
+-- Wersja PHP: 5.4.45-0+deb7u1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,6 +23,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `artykuly`
+--
+
+CREATE TABLE IF NOT EXISTS `artykuly` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idkat` int(11) NOT NULL,
+  `tytul` varchar(40) COLLATE utf8_polish_ci NOT NULL,
+  `autor` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+  `data` datetime NOT NULL,
+  `plik` varchar(40) COLLATE utf8_polish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Zrzut danych tabeli `artykuly`
+--
+
+INSERT INTO `artykuly` (`id`, `idkat`, `tytul`, `autor`, `data`, `plik`) VALUES
+(1, 2, 'Co zrobić, gdy bash nie działa', 'admin', '2015-09-24 15:00:00', 'artykuly2art1.html');
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `delegacje`
 --
 
@@ -36,7 +59,16 @@ CREATE TABLE IF NOT EXISTS `delegacje` (
   `nadgodziny` smallint(6) NOT NULL,
   `kilometry` smallint(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_polish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf32 COLLATE=utf32_polish_ci AUTO_INCREMENT=32 ;
+
+--
+-- Zrzut danych tabeli `delegacje`
+--
+
+INSERT INTO `delegacje` (`id`, `idem`, `numer`, `datadel`, `do`, `srtrans`, `nadgodziny`, `kilometry`) VALUES
+(4, 40, '2635/2015', '2015-06-18', 'SE PÅ‚ock', 'WCY23456', 2, 236),
+(27, 40, '354/2015', '2015-05-14', 'SE Narew', 'helikopter', 5, 341),
+(31, 40, 'Testy NAR', '2015-05-15', 'ODM Warszawa', 'nie dotyczy', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -51,26 +83,22 @@ CREATE TABLE IF NOT EXISTS `dyzury` (
   `datakonc` date NOT NULL,
   `grupa` varchar(50) CHARACTER SET utf8 COLLATE utf8_roman_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=42 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=57 ;
 
 --
 -- Zrzut danych tabeli `dyzury`
 --
 
 INSERT INTO `dyzury` (`id`, `idem`, `datapocz`, `datakonc`, `grupa`) VALUES
-(1, 40, '2013-08-01', '2013-08-18', 'telemechanika'),
 (3, 39, '2013-08-12', '2013-08-13', 'Å‚Ä…cznoÅ›c'),
 (4, 41, '2013-08-01', '2013-08-17', 'Dyster soft.'),
 (5, 39, '2013-08-19', '2013-08-20', 'Å‚Ä…cznoÅ›Ä‡'),
 (6, 43, '2013-08-12', '2013-08-25', 'informatyka'),
-(7, 52, '2013-08-05', '2013-08-16', 'zasilanie'),
 (8, 45, '2013-08-05', '2013-08-18', 'klimatyzacja'),
 (9, 54, '2013-08-12', '2013-08-21', 'Dyster hard.'),
 (10, 0, '0000-00-00', '0000-00-00', ''),
-(12, 46, '2012-08-19', '2012-08-31', 'telemechanika'),
 (13, 0, '0000-00-00', '0000-00-00', ''),
 (15, 50, '2013-08-14', '2013-08-18', 'Å‚Ä…cznoÅ›Ä‡'),
-(16, 40, '2013-09-16', '2013-09-30', 'telemechanika'),
 (17, 39, '2013-09-16', '2013-09-20', 'Å‚Ä…cznoÅ›Ä‡'),
 (18, 41, '2013-09-18', '2013-09-30', 'Dyster software'),
 (19, 42, '2013-09-16', '2013-09-30', 'Dyster hardware'),
@@ -78,13 +106,19 @@ INSERT INTO `dyzury` (`id`, `idem`, `datapocz`, `datakonc`, `grupa`) VALUES
 (21, 43, '2013-09-19', '2013-09-28', 'informatyka'),
 (23, 45, '2013-09-16', '2013-09-22', 'klimatyzacja'),
 (24, 56, '2013-09-23', '2013-09-29', 'klimatyzacja'),
-(26, 40, '2015-06-01', '2015-06-06', 'telemechanika'),
 (29, 49, '2015-06-15', '2015-06-29', 'zasilanie'),
 (31, 39, '2015-05-31', '2015-06-01', 'telekomunikacja'),
 (32, 46, '2015-06-21', '2015-06-28', 'telemechanika'),
 (34, 51, '2015-06-28', '2015-06-29', 'Å‚Ä…cznoÅ›Ä‡'),
-(37, 40, '2015-06-30', '2015-06-30', 'telemechanika'),
-(41, 40, '2015-06-15', '2015-06-21', 'telemechanika');
+(43, 40, '2015-06-30', '2015-06-30', 'telemechanika'),
+(47, 40, '2015-07-25', '2015-07-31', 'telemechanika'),
+(49, 40, '2015-08-01', '2015-08-09', 'telemechanika'),
+(51, 40, '2015-07-01', '2015-07-07', 'telemechanika'),
+(52, 46, '2015-07-08', '2015-07-24', 'telemechanika'),
+(53, 52, '2015-07-17', '2015-07-31', 'zasilanie'),
+(54, 49, '2015-07-01', '2015-07-16', 'zasilanie'),
+(55, 45, '2015-07-01', '2015-07-15', 'klimatyzacja'),
+(56, 56, '2015-07-16', '2015-07-31', 'klimatyzacja');
 
 -- --------------------------------------------------------
 
@@ -110,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `tags` varchar(50) COLLATE utf8_polish_ci NOT NULL,
   `uwagi` varchar(250) COLLATE utf8_polish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=64 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=67 ;
 
 --
 -- Zrzut danych tabeli `employee`
@@ -148,7 +182,34 @@ INSERT INTO `employee` (`id`, `firstName`, `lastName`, `managerId`, `title`, `de
 (54, 'Zbyszek', 'Urbaniak', 0, 'pracownik', 'PSE Centrum', '1744', '601-838-862', 'zbigniew.urbaniak@pse.pl', 'Warszawa', '', '', NULL, NULL, 'TW - Dyster', ''),
 (55, 'Hubert', 'Wincenciak', 0, 'pracownik', 'PSE Centrum', '1743', '697-985-302', 'hubert.wincenciak@pse.pl', 'Warszawa', '', '', NULL, NULL, 'PSEC - ZT', ''),
 (56, 'Jacek', 'SzczepaÅ„ski', 0, 'pracownik', 'PSE Centrum', '1739', '663-999-805', 'jacek.szczepanski@pse.pl', 'Warszawa', '', '', NULL, NULL, 'TW - Klimatyzacja', ''),
-(57, 'Andrzej', 'KamiÅ„ski', 0, 'pracownik', 'Arewa', '', '501-765-258', '', 'Wronki', '', '', NULL, NULL, 'Farmy W. - Wronki', '');
+(57, 'Andrzej', 'KamiÅ„ski', 0, 'pracownik', 'Arewa', '', '501-765-258', '', 'Wronki', '', '', NULL, NULL, 'Farmy W. - Wronki', ''),
+(65, 'Wojciech', 'Nicewicz', 0, 'pracownik', 'n/n', NULL, '664 408 856', 'n@n.com', NULL, '', '', NULL, NULL, 'Farmy W. - Potasznia, Piecki', ''),
+(66, 'DyÅ¼urny', 'OCD BiaÅ‚ystok', 0, 'pracownik', 'OCD BiaÅ‚ystok', NULL, '085-740 53 82', 'n@n.com', NULL, '', '', NULL, NULL, 'ZDR - BiaÅ‚ystok', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `kategorie`
+--
+
+CREATE TABLE IF NOT EXISTS `kategorie` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `kategoria` varchar(40) COLLATE utf8_polish_ci NOT NULL,
+  `opis` varchar(80) COLLATE utf8_polish_ci DEFAULT NULL,
+  `idup` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=7 ;
+
+--
+-- Zrzut danych tabeli `kategorie`
+--
+
+INSERT INTO `kategorie` (`id`, `kategoria`, `opis`, `idup`) VALUES
+(1, 'Linuxowe How-To', 'Co i jak w Å›wiecie Linuxa', NULL),
+(2, 'Dyster', 'Wszystko na temat DYSTERA i pokrewne', NULL),
+(3, 'Telemechanika', 'Telemechanika i pokrewne', NULL),
+(4, 'Programowanie', 'JÄ™zyki programowania PHP, C, C++, Python etc', NULL),
+(5, 'Web Development', 'HTML, CSS, JavaScript, AngularJS etc.', NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
