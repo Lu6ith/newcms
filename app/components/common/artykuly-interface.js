@@ -8,6 +8,12 @@ angular
                     //console.log('contactInterface - ', contactsInterface.items);
                 });
             },
+            fetchkat: function (id) {
+                artykulyRequest.fetchkat(id, function (responseData) {
+                    artykulyInterface.itemskat = responseData;
+                    //console.log('Id kategorii - ', id, artykulyInterface.itemskat);
+                });
+            },
             delete: function (item) {
                 modalSrv.show('components/modal/modal-remove-artykuly-tpl.html',
                     item,

@@ -3,17 +3,20 @@
  */
 angular
     .module('myApp.kategorieItemDctv', [])
-    .directive('kategorieItemDctv', function ($timeout) {
+    .directive('kategorieItemDctv', function () {
         return {
             restrict: "E",
             scope: {
                 item: "=",
                 update: "&",
-                delete: "&"
+                delete: "&",
+                itemart: "="
             },
             templateUrl: "components/directives/kategorie-item/kategorie-item-tpl.html",
-            controller: function ($scope) {
+            controller: function ($scope /*artykulyInterface*/) {
 
+                //$scope.itemart = artykulyInterface.fetchkat($scope.item.id);
+                //console.log("Artykuły - ", $scope.itemart);
                 // tworz� kopi� price
 /*                $scope.price = $scope.item.price;
 
@@ -31,4 +34,4 @@ angular
                 });*/
             }
         }
-    })
+    });

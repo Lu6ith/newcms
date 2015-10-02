@@ -688,8 +688,9 @@ function getKatAll() {
 function getKategoria($idem) {
     global $app;
 
-    $sql = "select e.id, e.kategoria, e.opis, e.idup " .
+    $sql = "select e.id, e.kategoria, e.opis, e.idup, r.tytul, r.data " .
             "from kategorie e " .
+            "left join artykuly r on r.idkat = e.id " .
             "where e.id = :idem";
     try {
         $db = getConnection();
@@ -792,8 +793,9 @@ function delKategoria($id) {
 //------------------  A R T Y K U L Y   -------------------------------------
 function getArtykuly() {
 
-    $sql = "select e.id, e.idkat, e.tytul, e.autor, e.data, e.plik " .
+    $sql = "select e.id, e.idkat, r.kategoria, e.tytul, e.autor, e.data, e.plik " .
             "from artykuly e ".
+	    "left join kategorie r on r.id = e.idkat " .
             "order by e.idkat, e.data";
     try {
         $db = getConnection();

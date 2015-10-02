@@ -13,6 +13,7 @@ angular
                 isArray: false
             },
             fetchkat: {
+                url: CONFIGC.API + 'kategorie/:id/artykuly',
                 method: 'GET',
                 responseType: 'json',
                 isArray: true

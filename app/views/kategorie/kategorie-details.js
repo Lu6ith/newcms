@@ -19,14 +19,21 @@ angular
                 resolve: {
                     responseData: function (kategorieRequest, $stateParams) {
                         return kategorieRequest.fetchone({id: $stateParams.id});
+                    },
+                    responseDataKat: function (artykulyRequest, $stateParams) {
+                        return artykulyRequest.fetchkat({id: $stateParams.id});
                     }
                 }
             });
     })
-    .controller('KategorieDetailsCtrl', function ($scope, responseData, kategorieRequest) {
+    .controller('KategorieDetailsCtrl', function ($scope, responseData, responseDataKat, kategorieRequest) {
         responseData.$promise.then(function (data) {
             $scope.data = data;
-            console.log('Kategoria - ', $scope.data);
+            //console.log('Kategoria - ', $scope.data);
+        });
+        responseDataKat.$promise.then(function (data) {
+            $scope.dataart = data;
+            console.log('Artykuly - ', $scope.dataart);
         });
         $scope.$root.unsaved = true;
         $scope.update = function () {

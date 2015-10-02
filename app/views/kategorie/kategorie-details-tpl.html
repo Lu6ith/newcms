@@ -19,5 +19,27 @@
 
             <button class="btn btn-primary" ng-if="$root.userState.access" ng-click="update()">zapisz zmiany</button>
         </div>
+        <div class="col-lg-9">
+
+            <artykuly-item-dctv
+                    item="item"
+                    ng-repeat="item in dataart
+                    | startFromFtr:paginationSettings.currentPage:paginationSettings.itemsPerPage
+                    | limitTo:paginationSettings.itemsPerPage"
+                    update="updatekat(item)"
+                    delete="deletekat(item)">
+            </artykuly-item-dctv>
+
+            <div class="row">
+
+            </div>
+            <pagination total-items="(dataart).length"
+                        ng-model="paginationSettings.currentPage"
+                        class="pagination-sm"
+                        items-per-page="paginationSettings.itemsPerPage"
+                        num-pages="paginationSettings.numPages">
+            </pagination>
+
+        </div>
     </div>
 </div>
