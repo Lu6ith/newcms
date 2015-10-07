@@ -1,6 +1,6 @@
 angular
-    .module('myApp.artykulyItemDctv', [])
-    .directive('artykulyItemDctv', function () {
+    .module('myApp.artykulyDetailsDctv', [])
+    .directive('artykulyDetailsDctv', function () {
         return {
             restrict: "E",
             scope: {
@@ -8,11 +8,11 @@ angular
                 update: "&",
                 delete: "&"
             },
-            templateUrl: "components/directives/artykuly-item/artykuly-item-tpl.html",
+            templateUrl: "components/directives/artykuly-item/artykuly-details-tpl.html",
             controller: function ($scope) {
                 $scope.lengthzero = false;
-                //console.log('Div - ', $("#markdiv").length);
-                if ($("#markdiv").length == 1) { $scope.lengthzero = true;}
+                //console.log('Div - ', $("#markdiv1").length);
+                if ($("#markdiv1").length == 1) { $scope.lengthzero = true;}
                 // tworz� kopi� price
 /*                $scope.price = $scope.item.price;
 

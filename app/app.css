@@ -201,6 +201,14 @@ header-strip*/
   padding: 10px 0;
 }
 
+.slide-animate-container {
+  position:relative;
+  background: ghostwhite;
+  border:1px solid black;
+  height:240px;
+  overflow:hidden;
+}
+
 .slide-animate {
   padding:10px;
 }

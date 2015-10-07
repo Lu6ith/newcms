@@ -84,8 +84,11 @@ $app->delete('/kategorie/:id',  'delKategoria');
 // Artykuły
 //---------------------------------------
 $app->get('/artykuly/', 'getArtykuly');
-$app->get('/kategorie/:idem/artykuly/', 'getKatArtykuly');
+$app->get('/kategorie/:idem/artykuly', 'getKatArtykuly');
 $app->get('/artykuly/:idem', 'getArtykul');
+$app->put('/artykuly/:idem', 'updateArtykul');
+$app->post('/artykuly/', 'addArtykul');
+$app->delete('/artykuly/:id',  'delArtykul');
 
 $app->run();
 
@@ -688,9 +691,9 @@ function getKatAll() {
 function getKategoria($idem) {
     global $app;
 
-    $sql = "select e.id, e.kategoria, e.opis, e.idup, r.tytul, r.data " .
+    $sql = "select e.id, e.kategoria, e.opis, e.idup " .
             "from kategorie e " .
-            "left join artykuly r on r.idkat = e.id " .
+            //"inner join artykuly r on e.id = r.idkat " .
             "where e.id = :idem";
     try {
         $db = getConnection();
@@ -847,8 +850,9 @@ function getArtykul($idem) {
 
 function getKatArtykuly($idem) {
 
-    $sql = "select e.id, e.idkat, e.tytul, e.autor, e.data, e.plik " .
+    $sql = "select e.id, e.idkat, r.kategoria, e.tytul, e.autor, e.data, e.plik " .
             "from artykuly e ".
+	    "left join kategorie r on r.id = e.idkat " .
             "where e.idkat = :idem ".
             "order by e.data";
     try {
@@ -871,6 +875,87 @@ function getKatArtykuly($idem) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
     //echo "go";
+}
+
+function updateArtykul($id) {
+    global $app;
+
+        $request = Slim::getInstance()->request();
+        $body = $request->getBody();
+        $wine = json_decode($body);
+        $sql = "UPDATE artykuly SET idkat=:idkat, tytul=:tytul, autor=:autor, plik=:plik, data=:data WHERE id=:id";
+        try {
+                $db = getConnection();
+                $stmt = $db->prepare($sql);
+                $stmt->bindParam("idkat", $wine->idkat);
+                $stmt->bindParam("tytul", $wine->tytul);
+                $stmt->bindParam("autor", $wine->autor);
+		        $stmt->bindParam("plik", $wine->plik);
+		        $stmt->bindParam("data", $wine->data);
+                $stmt->bindParam("id", $id);
+                $stmt->execute();
+                $db = null;
+                $app->status(200);
+        $app->contentType('application/json');
+
+                //$app->response()->header('Content-Type', 'application/json');
+        // Include support for JSONP requests
+        if (!isset($_GET['callback'])) {
+            echo json_encode($wine);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($wine) . ');';
+        };
+                //echo json_encode($wine);
+        } catch(PDOException $e) {
+                echo '{"error":{"text":'. $e->getMessage() .'}}';
+	}
+}
+
+function addArtykul() {
+    global $app;
+
+	$request = Slim::getInstance()->request();
+	$body = $request->getBody();
+	$wine = json_decode($body);
+	$sql = "INSERT INTO artykuly SET idkat=:idkat, tytul=:tytul, autor=:autor, plik=:plik, data=:data";
+	try {
+		$db = getConnection();
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam("idkat", $wine->idkat);
+        $stmt->bindParam("tytul", $wine->tytul);
+        $stmt->bindParam("autor", $wine->autor);
+        $stmt->bindParam("plik", $wine->plik);
+        $stmt->bindParam("data", $wine->data);
+		$stmt->execute();
+		$wine->id = $db->lastInsertId();
+		$db = null;
+		$app->status(200);
+        $app->contentType('application/json');
+
+		//$app->response()->header('Content-Type', 'application/json');
+        // Include support for JSONP requests
+        if (!isset($_GET['callback'])) {
+            echo json_encode($wine);
+        } else {
+            echo $_GET['callback'] . '(' . json_encode($wine) . ');';
+        };
+		//echo json_encode($wine);
+	} catch(PDOException $e) {
+		echo '{"error":{"text":'. $e->getMessage() .'}}';
+	}
+}
+
+function delArtykul($id) {
+	$sql = "DELETE FROM artykuly WHERE id=:id";
+	try {
+		$db = getConnection();
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam("id", $id);
+		$stmt->execute();
+		$db = null;
+	} catch(PDOException $e) {
+		echo '{"error":{"text":'. $e->getMessage() .'}}';
+	}
 }
 
 function getConnection() {

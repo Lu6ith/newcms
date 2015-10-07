@@ -12,9 +12,11 @@ angular
             });
     })
 
-    .controller('artykulyListCtrl', function ($scope, artykulyInterface) {
+    .controller('artykulyListCtrl', function ($scope, $rootScope, artykulyInterface) {
 
         $scope.artykulyInterface = artykulyInterface;
+
+        $rootScope.actpage = 'artykuly';
 
         artykulyInterface.fetch();
 

@@ -12,11 +12,13 @@ angular
             });
     })
 
-    .controller('telekomListCtrl', function ($scope, telekomsInterface) {
+    .controller('telekomListCtrl', function ($scope, $rootScope, telekomsInterface) {
 
         $scope.telekomsInterface = telekomsInterface;
 
         telekomsInterface.fetch();
+
+        $rootScope.actpage = 'employees';
 
         $scope.searchControl = {};
         //console.log('Kontakty: ', $scope.telekomsInterface.items);

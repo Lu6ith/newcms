@@ -12,9 +12,10 @@ angular
             });
     })
 
-    .controller('ContactListCtrl', function ($scope, contactsInterface) {
+    .controller('ContactListCtrl', function ($scope, $rootScope, contactsInterface) {
 
         $scope.contactsInterface = contactsInterface;
+        $rootScope.actpage = 'employees';
 
         contactsInterface.fetch();
 

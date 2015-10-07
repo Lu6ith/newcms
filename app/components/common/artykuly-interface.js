@@ -24,7 +24,7 @@ angular
                             console.log('Index of artykuly - ', itemindex);
                             artykulyInterface.items.splice(itemindex, 1);
                             $timeout(function () {
-                                alert('usunięto!');
+                                alert('usunięto artykuł!');
                             });
                         });
                     });
@@ -46,6 +46,7 @@ angular
                     });
             },
             update: function (item) {
+                //console.log('Update artykuł!');
                 artykulyRequest.update(item, function () {
                     //productsInterface.items.push(responseData.data);
                     $rootScope.userState.unsavedData = false;

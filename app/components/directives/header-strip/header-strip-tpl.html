@@ -1,20 +1,23 @@
 <div class="container-fluid" style="background-color: #F3F3F4;border-bottom: 1px solid #e7eaec !important;">
     <span ncy-breadcrumb class="pull-left"></span>
     <ul class="list-inline pull-right" style="margin: 0 !important;">
-        <li ng-if="$root.userState.access">
+        <li ng-if="$root.userState.access" ng-switch="" data-on="$root.actpage">
             <!--<a class="btn btn-success btn-add" ng-click="productsInterface.add()">
                 <i class="fa fa-plus"></i>
                 dodaj produkt
             </a>-->
-            <a class="btn btn-info btn-add" ng-click="contactsInterface.add()">
+            <a ng-switch-when="employees" class="btn btn-info btn-add" ng-click="contactsInterface.add()">
                 <i class="fa fa-plus"></i>
                 dodaj kontakt  {{ncyBreadcrumb}}
             </a>
-            <a class="btn btn-info btn-add" ng-click="kategorieInterface.add()">
+            <a ng-switch-when="kategorie" class="btn btn-info btn-add" ng-click="kategorieInterface.add()">
                 <i class="fa fa-plus"></i>
-                dodaj karegorię
+                dodaj kategorię
             </a>
-
+            <a ng-switch-when="artykuly" class="btn btn-info btn-add" ng-click="artykulyInterface.add()">
+                <i class="fa fa-plus"></i>
+                dodaj artykuł
+            </a>
         </li>
         <li ng-if="$root.userState.unsavedData">
             <a class="header-strip-btn">

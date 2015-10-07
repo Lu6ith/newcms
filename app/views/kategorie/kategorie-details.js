@@ -33,7 +33,7 @@ angular
         });
         responseDataKat.$promise.then(function (data) {
             $scope.dataart = data;
-            console.log('Artykuly - ', $scope.dataart);
+            //console.log('Artykuly - ', $scope.dataart);
         });
         $scope.$root.unsaved = true;
         $scope.update = function () {

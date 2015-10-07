@@ -3,7 +3,7 @@
  */
 angular
     .module('myApp.headerStripDctv', [])
-    .directive('headerStripDctv', function ($http, CONFIG, userInterface, productsInterface, contactsInterface, telekomsInterface, kategorieInterface, $cookieStore){
+    .directive('headerStripDctv', function ($http, CONFIG, userInterface, productsInterface, contactsInterface, telekomsInterface, kategorieInterface, artykulyInterface, $cookieStore){
         return {
             templateUrl: "components/directives/header-strip/header-strip-tpl.html",
             transclude: true,
@@ -12,12 +12,16 @@ angular
                 item: "="
             },
             restrict: "E",
-            controller: function ($scope, modalSrv){
+            controller: function ($scope, $rootScope,  modalSrv){
 
                 $scope.productsInterface= productsInterface;
                 $scope.contactsInterface= contactsInterface;
                 $scope.telekomsInterface= telekomsInterface;
                 $scope.kategorieInterface= kategorieInterface;
+                $scope.artykulyInterface= artykulyInterface;
+
+                console.log('actpage = ', $rootScope.actpage);
+                //$scope.actpage = $rootScope.actpage;
 
                 $scope.signIn = function () {
                     modalSrv.show("components/modal/modal-login-tpl.html",
@@ -34,5 +38,5 @@ angular
                 !$cookieStore.get('logged') && $scope.signIn();
             }
         }
-    })
+    });
 

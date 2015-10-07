@@ -2,22 +2,64 @@
     <div class="row">
         <div class="col-lg-3">
             <div class="form-group">
+                <label for="idkat">kategoria</label>
+                <select name="idkat" id="idkat" class="form-control"
+                        ng-model="selectedKat"
+                        ng-options="kat.kategoria for kat in datakat track by kat.id"
+                        ng-disabled="!$root.userState.access">
+                </select>
+                <!--<select id="kateg" class="form-control"
+                        ng-model="selectedKat"
+                        ng-disabled="!$root.userState.access">
+                    <option value="">Wybierz kategorię</option>
+                    <option value="{{kat.id}}" ng-repeat="kat in datakat">{{kat.kategoria}}</option>
+                </select>-->
+            </div>
+
+            <div class="form-group">
                 <label for="tytul">tytuł</label>
                 <input id="tytul" class="form-control"
-                          type="text"
-                          ng-model="data.tytul"
-                          ng-disabled="!$root.userState.access">
+                       type="text"
+                       ng-model="dataart.tytul"
+                       ng-disabled="!$root.userState.access">
             </div>
 
             <div class="form-group">
                 <label for="autor">autor</label>
                 <input id="autor" class="form-control"
                           type="text"
-                          ng-model="data.autor"
+                          ng-model="dataart.autor"
                           ng-disabled="!$root.userState.access">
             </div>
 
+            <div class="form-group">
+                <label for="plik">plik</label>
+                <input id="plik" class="form-control"
+                       type="text"
+                       ng-model="dataart.plik"
+                       ng-disabled="!$root.userState.access">
+            </div>
+
+            <div class="form-group">
+                <label for="data">data</label>
+                <input id="data" class="form-control" name="input"
+                       type="text"
+                       ng-model="dataart.data"
+                       placeholder="yyyy-MM-dd"
+                       ng-disabled="!$root.userState.access">
+            </div>
+            <!--<div role="alert">
+                <span class="error" ng-show="input.$error.required">Required!</span>
+                <span class="error" ng-show="input.$error.date">Not a valid date!</span>
+            </div>-->
             <button class="btn btn-primary" ng-if="$root.userState.access" ng-click="update()">zapisz zmiany</button>
+        </div>
+        <div class="col-lg-9">
+            <artykuly-details-dctv
+                    item="dataart"
+                    update="updateart(item.plik)"
+                    delete="artykulyInterface.update(item)">
+            </artykuly-details-dctv>
         </div>
     </div>
 </div>

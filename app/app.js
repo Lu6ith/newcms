@@ -2,6 +2,7 @@ angular
 
     .module('myApp', [
         'ngSanitize',
+        'hc.marked',
         'ui.router',
         'ngCookies',
         'ui.bootstrap',
@@ -20,6 +21,7 @@ angular
         'myApp.telekomItemDctv',
         'myApp.kategorieItemDctv',
         'myApp.artykulyItemDctv',
+        'myApp.artykulyDetailsDctv',
         'myApp.productsInterface',
         'myApp.contactsInterface',
         'myApp.telekomsInterface',
@@ -63,11 +65,34 @@ angular
         //$httpProvider.interceptors.push('apiInterceptor');
     })
 
+/*
+    .config(['markdownConverterProvider', function (markdownConverterProvider) {
+        // options to be passed to Showdown
+        // see: https://github.com/coreyti/showdown#extensions
+        markdownConverterProvider.config({
+            extensions: ['twitter'],
+            strikethrough: true,
+            tables: true
+        });
+    }])
+*/
+
+    .config(['markedProvider', function(markedProvider) {
+        markedProvider.setOptions({
+            gfm: true,
+            tables: true,
+            highlight: function (code) {
+                return hljs.highlightAuto(code).value;
+            }
+        });
+    }])
+
     .run(function ($rootScope, $cookieStore, userState, $filter) {
         var d = new Date();
         $rootScope.userState = userState;
         $rootScope._ = _;
         $rootScope.miesb = $filter('date')(d, 'M' );
         $rootScope.rokb = $filter('date')(d, 'yyyy' );
+        $rootScope.actpage = 'employees';
         userState.setUserAccess($cookieStore.get('logged'));
     });

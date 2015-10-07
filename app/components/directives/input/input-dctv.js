@@ -31,18 +31,20 @@ angular
                     required: 'required',
                     placeholder: attrs.placeholder,
                     'ng-model': 'model',
+                    'ng-value': attrs.value,
                     'ng-minlength': attrs.minlength || 3
                 });
 
                 if (attrs.type === 'date') {
                    tpl.attr({
-                       'datepicker-popup': ''
+                       'datepicker-popup': '',
+                       'ng-value': $scope.dt
                       /* 'datepicker-options': 'dateOptions'*/
                    })
-                };
+                }
 
                 var inputContent = el[0].getElementsByClassName('input-content');
                 angular.element(inputContent).append(tpl);
             }
         }
-    })
+    });
