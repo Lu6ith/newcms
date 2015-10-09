@@ -17,12 +17,12 @@
       "icon": "fa-envelope"
     },
     {
-      "name": "KnowHow",
+      "name": "BW Kategorie",
       "link": "kategorie-list",
       "icon": "fa-list-alt"
     },
     {
-      "name": "Artykuły",
+      "name": "BW Artykuły",
       "link": "artykuly-list",
       "icon": "fa-folder-open"
     },

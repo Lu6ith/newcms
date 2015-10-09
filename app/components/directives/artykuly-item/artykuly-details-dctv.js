@@ -5,14 +5,16 @@ angular
             restrict: "E",
             scope: {
                 item: "=",
+                lengthzero: "=",
+                checked: "=",
                 update: "&",
                 delete: "&"
             },
             templateUrl: "components/directives/artykuly-item/artykuly-details-tpl.html",
             controller: function ($scope) {
-                $scope.lengthzero = false;
+                //$scope.lengthzero = false;
                 //console.log('Div - ', $("#markdiv1").length);
-                if ($("#markdiv1").length == 1) { $scope.lengthzero = true;}
+                //if ($("#markdiv1").length == 1) { $scope.lengthzero = true;}
                 // tworz� kopi� price
 /*                $scope.price = $scope.item.price;
 
