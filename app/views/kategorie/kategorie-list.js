@@ -12,11 +12,13 @@ angular
             });
     })
 
-    .controller('KategorieListCtrl', function ($scope, $rootScope, kategorieInterface) {
+    .controller('KategorieListCtrl', function ($scope, $rootScope, kategorieInterface, artykulyInterface) {
 
         $scope.kategorieInterface = kategorieInterface;
+        $scope.artykulyInterface = artykulyInterface;
 
         kategorieInterface.fetch();
+        artykulyInterface.fetch();
 
         $rootScope.actpage = 'kategorie';
 

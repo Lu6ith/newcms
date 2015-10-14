@@ -16,12 +16,13 @@
         </div>
 
         <!-- List group -->
-        <ul class="list-group">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+        <ul class="list-group fixed-list">
+            <li ng-show="filteredItems.length > 0"
+                ng-repeat="art in filteredItems = (itemart | filter:{idkat: item.id})"
+                class="list-group-item">
+                {{art.tytul}} - {{art.data}}
+            </li>
+            <li ng-show="filteredItems.length == 0" class="list-group-item active"> Nie ma jescze plików !!!</li>
         </ul>
     </div>
 </div>

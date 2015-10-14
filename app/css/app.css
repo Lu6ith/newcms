@@ -351,3 +351,8 @@ todo table*/
     margin-bottom: 40px;
     text-decoration: underline;
 }
+
+.fixed-list {
+    min-height: 100px;
+    overflow-y: hidden;
+}
