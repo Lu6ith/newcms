@@ -9,12 +9,14 @@ body {
     font-size: 13px;
     color: #676a6c;
     background: url("patterns/crossword.png") scroll center center rgb(74, 74, 74);
+    padding-top: 92px;
 }
 
 /*
 left*/
 .page-header {
     background-color: #395870;
+    margin: 4px 0 21px;
 }
 
 .page-header h1 {
@@ -355,4 +357,8 @@ todo table*/
 .fixed-list {
     min-height: 100px;
     overflow-y: hidden;
+}
+
+.fixed-list li a {
+    color: #000101;
 }

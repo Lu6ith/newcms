@@ -1,6 +1,6 @@
 angular
     .module('myApp.artykulyInterface', [])
-    .service('artykulyInterface', function (artykulyRequest, modalSrv, $timeout, $rootScope) {
+    .service('artykulyInterface', function (artykulyRequest, modalSrv, $timeout, $rootScope, $http) {
         var artykulyInterface = {
             fetch: function () {
                 artykulyRequest.fetch(function (responseData) {
@@ -39,9 +39,26 @@ angular
                         artykulyRequest.add(data, function (responseData) {
                             console.log('response',responseData );
                             artykulyInterface.items.push(responseData);
-                            $timeout(function () {
-                                alert('Dodano nowy artykuł!');
+                            $http({
+                                method: 'GET',
+                                url: 'fileput.php?arg1=articles/' + data.idkat + '/' + data.plik + '&arg2="Tu nalezy wpisać zawartość ..."'
+                            }).then(function successCallback(response) {
+                                // this callback will be called asynchronously
+                                // when the response is available
+                                $timeout(function () {
+                                    alert('Dodano nowy artykuł ! - ' + response.status);
+                                });
+                            }, function errorCallback(response) {
+                                // called asynchronously if an error occurs
+                                // or server returns response with an error status.
+                                $timeout(function () {
+                                    alert('Błąd podczas zapisywania pliku ! ' + response.status);
+                                });
                             });
+
+                            /*$timeout(function () {
+                                alert('Dodano nowy artykuł!');
+                            });*/
                         });
                     });
             },

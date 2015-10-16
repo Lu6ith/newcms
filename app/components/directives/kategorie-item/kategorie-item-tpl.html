@@ -18,9 +18,9 @@
         <!-- List group -->
         <ul class="list-group fixed-list">
             <li ng-show="filteredItems.length > 0"
-                ng-repeat="art in filteredItems = (itemart | filter:{idkat: item.id})"
+                ng-repeat="art in filteredItems = (itemart | filter:{idkat: item.id}) | orderBy:'-data' | limitTo: 6"
                 class="list-group-item">
-                {{art.tytul}} - {{art.data}}
+                <a ui-sref="artykuly-details.item({id: art.id})">{{art.tytul}} - <span class="pull-right">{{art.data}}</span></a>
             </li>
             <li ng-show="filteredItems.length == 0" class="list-group-item active"> Nie ma jescze plików !!!</li>
         </ul>
