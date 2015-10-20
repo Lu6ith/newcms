@@ -8,6 +8,7 @@ angular
         'ui.bootstrap',
         'ncy-angular-breadcrumb',
         'ngMap',
+        'ngMessages',
         'aside.menu',
         'nvd3',
         'myApp.contact',

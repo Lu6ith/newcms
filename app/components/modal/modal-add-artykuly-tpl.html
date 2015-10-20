@@ -38,10 +38,11 @@
             plik:
         </input-dctv>
 
-        <input-dctv type="date"
+        <input-dctv type="text"
                     model="data.data"
                     required="true"
                     placeholder="yyyy-MM-dd"
+                    pattern="/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/"
                     error-msg="errorMsg">
             data:
         </input-dctv>

@@ -3,7 +3,7 @@
         <div class="col-lg-3">
             <div class="form-group">
                 <label for="idkat">kategoria</label>
-                <select name="idkat" id="idkat" class="form-control"
+                <select name="idkat" id="idkat" class="form-control" required
                         ng-model="selectedKat"
                         ng-options="kat.kategoria for kat in datakat track by kat.id"
                         ng-disabled="!$root.userState.access">
@@ -45,8 +45,8 @@
                 <input id="data" class="form-control" name="input"
                        type="text"
                        ng-model="dataart.data"
-                       placeholder="yyyy-MM-dd"
                        ng-disabled="!$root.userState.access">
+                <!--placeholder="yyyy-MM-dd"-->
             </div>
             <!--<div role="alert">
                 <span class="error" ng-show="input.$error.required">Required!</span>

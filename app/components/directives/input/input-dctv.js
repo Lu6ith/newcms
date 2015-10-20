@@ -32,16 +32,19 @@ angular
                     placeholder: attrs.placeholder,
                     'ng-model': 'model',
                     'ng-value': attrs.value,
+                    'ng-pattern': attrs.pattern,
                     'ng-minlength': attrs.minlength || 3
                 });
 
                 if (attrs.type === 'date') {
                    tpl.attr({
-                       'datepicker-popup': '',
-                       'ng-value': $scope.dt
+                       'datepicker-popup': ''
+                       /*'ng-value': $scope.dt*/
                       /* 'datepicker-options': 'dateOptions'*/
                    })
                 }
+
+                console.log('tpl value - ', tpl);
 
                 var inputContent = el[0].getElementsByClassName('input-content');
                 angular.element(inputContent).append(tpl);

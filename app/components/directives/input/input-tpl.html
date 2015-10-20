@@ -5,13 +5,14 @@
 
     <div class="input-content"></div>
 
-    <div ng-messages="inputDctv.$error" ng-if="errorMsg" class="text-danger">
+    <div ng-messages="inputDctv.$dirty && inputDctv.$error" ng-if="errorMsg" class="text-danger">
         <div ng-message="required">Pole wymagane</div>
         <div ng-message="minlength">Tekst zbyt krótki</div>
         <div ng-message="email">Email niepoprawny</div>
         <div ng-message="number">Wymagana liczba</div>
         <div ng-message="min">Musi być 0 lub powyżej</div>
         <div ng-message="max">Wartość przekracza górną granicę</div>
+        <div ng-message="pattern">Zły format daty</div>
     </div>
 
 </div>
